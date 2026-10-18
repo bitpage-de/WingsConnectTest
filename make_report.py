@@ -788,13 +788,15 @@ def text_summary(rows, meta, events, last=5):
     for label, value, sub in kpi_tiles(rows):
         lines.append(f"  {label + ':':<22}{value:>16}   {sub}")
     lines.append("")
-    lines.append(f"Letzte {min(last, len(rows))} Runden:  Zeit   Rd  Phase    Höhe ft  Ping 8.8.8.8  Ping 1.1.1.1  Verlust  DL curl")
+    row_fmt = "  {:>5}  {:>3}  {:<8} {:>9}  {:>12}  {:>12}  {:>7}  {:>7}"
+    lines.append(f"Letzte {min(last, len(rows))} Runden:")
+    lines.append(row_fmt.format("Zeit", "Rd", "Phase", "Höhe ft", "Ping 8.8.8.8", "Ping 1.1.1.1", "Verlust", "DL curl"))
     for r in rows[-last:]:
         p1 = "Timeout" if r["p1_timeout"] else fmt(r["p1_avg"], 0, "ms")
         p2 = "Timeout" if r["p2_timeout"] else fmt(r["p2_avg"], 0, "ms")
         loss = max([x for x in (r["p1_loss"], r["p2_loss"]) if x is not None] or [None])
-        lines.append(f"  {r['t_local'].strftime('%H:%M'):>22}  {r['round']:>3}  {(r['phase'] or '–'):<8} {fmt(r['alt']):>8} "
-                     f"{p1:>12}  {p2:>12}  {fmt(loss, 0, '%'):>7}  {fmt(r['curl_dl'], 2):>7}")
+        lines.append(row_fmt.format(r["t_local"].strftime("%H:%M"), r["round"], r["phase"] or "–", fmt(r["alt"]),
+                                    p1, p2, fmt(loss, 0, "%"), fmt(r["curl_dl"], 2)))
     notable = [(i, s, m) for i, s, m in events if s != "info"]
     lines.append("")
     lines.append(f"Auffälligkeiten: {len(notable)}" + (f" (letzte {min(8, len(notable))})" if len(notable) > 8 else ""))
