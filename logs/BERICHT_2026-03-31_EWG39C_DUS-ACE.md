@@ -5,6 +5,11 @@
 **Flugphasen:** CRUISE + Beginn DESCENT | **Flughoehe:** 23.788 - 35.476 ft
 **Provider:** Wings Connect by Anuvu (Satellit, Ku-Band)
 
+> **Erratum (2026-10-18):** Zwei Fehler bei der Auswertung, entdeckt bei der Vorbereitung von Flug 2:
+> 1. Alle Uhrzeiten in diesem Bericht sind **Laptop-Zeit (MESZ, UTC+2)**, nicht UTC. Der Satelliten-Handover bei Gibraltar war also ~13:00 UTC, der Messzeitraum 12:42–14:01 UTC.
+> 2. Das Messskript schrieb den Paketverlust als **Anzahl verlorener Pakete (von 10)**, nicht in Prozent. "4 %" bedeutet 40 %, "6 %" 60 %. In der Handover-Phase (15:04–15:22 MESZ) lag der Verlust damit bei 30–60 %, nicht 3–6 %.
+> Die korrigierte Auswertung steht in `REPORT_2026-03-31_EWG39C_DUS-ACE.html` (erzeugt mit `make_report.py`).
+
 ---
 
 ## Zusammenfassung

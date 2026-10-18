@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wings Connect EWG39C · DUS → ACE</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface-1: #fcfcfb;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --band: rgba(11,11,11,0.06);
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a;
+  --seq-1: #86b6ef; --seq-2: #5598e7; --seq-3: #2a78d6; --seq-4: #1c5cab; --seq-5: #0d366b;
+  --crit: #d03b3b; --warn: #fab219; --info: #898781;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface-1: #1a1a19;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --band: rgba(255,255,255,0.08);
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+    --seq-1: #cde2fb; --seq-2: #9ec5f4; --seq-3: #6da7ec; --seq-4: #3987e5; --seq-5: #256abf;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface-1: #1a1a19;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --band: rgba(255,255,255,0.08);
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70;
+  --seq-1: #cde2fb; --seq-2: #9ec5f4; --seq-3: #6da7ec; --seq-4: #3987e5; --seq-5: #256abf;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text-primary);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
+header { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 24px; margin-bottom: 20px; }
+header h1 { font-size: 26px; margin: 0 0 4px; font-weight: 650; letter-spacing: -0.01em; }
+header .meta { color: var(--text-secondary); margin: 0; }
+header .meta span + span::before { content: " · "; color: var(--text-muted); }
+.spacer { flex: 1; }
+button.theme { border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+  border-radius: 8px; padding: 6px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+h2 { font-size: 17px; font-weight: 650; margin: 28px 0 10px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; }
+.tile .label { color: var(--text-secondary); font-size: 13px; }
+.tile .value { font-size: 26px; font-weight: 600; margin: 2px 0; }
+.tile .sub { color: var(--text-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.grid.half { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px 10px; }
+.card h3 { margin: 0; font-size: 15px; font-weight: 650; }
+.card .sub { margin: 2px 0 8px; color: var(--text-muted); font-size: 12.5px; }
+.plot { position: relative; width: 100%; min-height: 120px; }
+.plot svg { display: block; overflow: visible; }
+.empty { color: var(--text-muted); font-size: 13px; padding: 24px 0; text-align: center; margin: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 6px; color: var(--text-secondary); font-size: 12.5px; }
+.lg-item { display: inline-flex; align-items: center; gap: 6px; }
+.key { display: inline-block; width: 14px; height: 2px; border-radius: 1px; }
+.key.band-key { width: 14px; height: 10px; background: var(--band); border: 1px solid var(--border); }
+.key.dotkey { width: 10px; height: 10px; border-radius: 50%; }
+.key.ring { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--text-primary); background: transparent; }
+svg .grid { stroke: var(--grid); stroke-width: 1; }
+svg .baseline { stroke: var(--axis); stroke-width: 1; }
+svg .tick { fill: var(--text-muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+svg .line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+svg .area { opacity: 0.10; }
+svg .dot { stroke: var(--surface-1); stroke-width: 2; }
+svg .band { fill: var(--band); }
+svg .crosshair { stroke: var(--text-secondary); stroke-width: 1; pointer-events: none; }
+svg .marker { stroke: var(--axis); stroke-width: 1; }
+svg .marker-label { fill: var(--text-secondary); font-size: 11px; }
+svg .track { fill: none; stroke: var(--axis); stroke-width: 1; }
+svg .pt { stroke: var(--surface-1); stroke-width: 2; }
+svg .pt-timeout { fill: none; stroke: var(--text-primary); stroke-width: 2; }
+svg .map-label { fill: var(--text-secondary); font-size: 11.5px; }
+svg .hit { fill: transparent; cursor: crosshair; }
+.tip { position: fixed; z-index: 10; display: none; pointer-events: none; background: var(--surface-1);
+  color: var(--text-primary); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px;
+  font-size: 12.5px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 260px; }
+.tip-h { color: var(--text-secondary); margin-bottom: 4px; }
+.tip-r { display: flex; align-items: center; gap: 8px; font-variant-numeric: tabular-nums; }
+.tip-r strong { font-weight: 600; }
+.tip-n { color: var(--text-secondary); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { color: var(--text-secondary); font-weight: 600; position: sticky; top: 0; background: var(--surface-1); }
+td.num, th.num { text-align: right; }
+.tablewrap { overflow: auto; max-height: 70vh; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-1); }
+details > summary { cursor: pointer; color: var(--text-secondary); margin-bottom: 8px; }
+.sev { display: inline-flex; align-items: center; gap: 6px; }
+.sev::before { content: ""; width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.sev.crit::before { background: var(--crit); } .sev.warn::before { background: var(--warn); } .sev.info::before { background: var(--info); }
+.notes { background: var(--surface-1); border: 1px solid var(--border); border-radius: 12px; padding: 10px 16px; color: var(--text-secondary); font-size: 13.5px; }
+.notes ul { margin: 6px 0; padding-left: 18px; }
+footer { margin-top: 32px; color: var(--text-muted); font-size: 12.5px; }
+@media print { button.theme { display: none; } .tablewrap { max-height: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>Wings Connect EWG39C · DUS → ACE</h1>
+    <p class="meta"><span>31.03.2026 14:42 – 16:01 lokal (12:42 – 14:01 UTC)</span><span>29 Runden in 1:19 h</span><span>Höhe 22.025 – 35.476 ft</span><span>CRUISE</span></p>
+  </div>
+  <div class="spacer"></div>
+  <button class="theme" id="theme" type="button">Hell / Dunkel</button>
+</header>
+
+<section class="kpis"><div class="tile"><div class="label">Ping, Median</div><div class="value">801 ms</div><div class="sub">683 – 1.382 ms</div></div><div class="tile"><div class="label">Paketverlust, Mittel</div><div class="value">15,9 %</div><div class="sub">max. 100 %</div></div><div class="tile"><div class="label">Runden mit Timeout</div><div class="value">2</div><div class="sub">von 29 Runden</div></div><div class="tile"><div class="label">Verfügbarkeit</div><div class="value">93 %</div><div class="sub">Runden ohne Ping-Timeout</div></div><div class="tile"><div class="label">DNS, Median</div><div class="value">1.193 ms</div><div class="sub">204 – 5.048 ms</div></div><div class="tile"><div class="label">HTTP TTFB, Median</div><div class="value">2,9 s</div><div class="sub">2,2 – 9,7 s</div></div><div class="tile"><div class="label">Download, Median</div><div class="value">0,58 Mbit/s</div><div class="sub">max. 1,31 Mbit/s · curl</div></div><div class="tile"><div class="label">Upload, Median</div><div class="value">0,41 Mbit/s</div><div class="sub">max. 0,72 Mbit/s · curl</div></div></section>
+
+<h2>Verlauf</h2>
+<div class="grid"><div class="card" data-chart="ping"><h3>Ping-Latenz</h3><p class="sub">Mittelwert aus 10 Paketen, in ms</p><div class="plot"></div><div class="legend"></div></div><div class="card" data-chart="loss"><h3>Paketverlust</h3><p class="sub">Anteil verlorener Ping-Pakete, in %</p><div class="plot"></div><div class="legend"></div></div><div class="card" data-chart="dns"><h3>DNS-Auflösung</h3><p class="sub">Dauer von nslookup, in ms</p><div class="plot"></div><div class="legend"></div></div><div class="card" data-chart="ttfb"><h3>HTTP Time-to-First-Byte</h3><p class="sub">curl, Sekunden bis zum ersten Byte</p><div class="plot"></div><div class="legend"></div></div><div class="card" data-chart="curl"><h3>Bandbreite (curl)</h3><p class="sub">5 MB Download / 512 KB Upload über HTTPS, ein TCP-Stream, in Mbit/s</p><div class="plot"></div><div class="legend"></div></div></div>
+<div class="grid half" style="margin-top:12px"><div class="card" data-chart="alt"><h3>Flughöhe</h3><p class="sub">in ft, Wechsel der Flugphase markiert</p><div class="plot"></div><div class="legend"></div></div><div class="card" data-chart="speed"><h3>Geschwindigkeit über Grund</h3><p class="sub">in kts</p><div class="plot"></div><div class="legend"></div></div></div>
+
+<h2>Flugspur</h2>
+<div class="card" data-map><h3>Position je Messrunde</h3><p class="sub">Punktfarbe = Ping-Latenz (bester Wert der Runde), hohle Punkte = Ping-Timeout</p><div class="plot"></div><div class="legend"></div></div>
+
+<h2>Auffälligkeiten</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Lokal</th><th class="num">Rd</th><th>Phase</th><th class="num">Höhe ft</th><th>Position</th><th>Ereignis</th></tr></thead>
+<tbody><tr><td>15:00</td><td class="num">5</td><td>CRUISE</td><td class="num">35.428</td><td>36,21, -7,11</td><td><span class="sev crit">Kompletter Ausfall: beide Ping-Ziele Timeout</span></td></tr><tr><td>15:00</td><td class="num">5</td><td>CRUISE</td><td class="num">35.428</td><td>36,21, -7,11</td><td><span class="sev warn">HTTP-Fehler: google.com</span></td></tr><tr><td>15:04</td><td class="num">6</td><td>CRUISE</td><td class="num">35.427</td><td>35,75, -7,57</td><td><span class="sev warn">Paketverlust 60 %</span></td></tr><tr><td>15:04</td><td class="num">6</td><td>CRUISE</td><td class="num">35.427</td><td>35,75, -7,57</td><td><span class="sev warn">Latenz erhöht: 1.316 ms (Median 801 ms)</span></td></tr><tr><td>15:08</td><td class="num">7</td><td>CRUISE</td><td class="num">35.473</td><td>35,34, -7,99</td><td><span class="sev warn">Paketverlust 40 %</span></td></tr><tr><td>15:08</td><td class="num">7</td><td>CRUISE</td><td class="num">35.473</td><td>35,34, -7,99</td><td><span class="sev warn">Latenz erhöht: 1.354 ms (Median 801 ms)</span></td></tr><tr><td>15:11</td><td class="num">8</td><td>CRUISE</td><td class="num">35.476</td><td>34,95, -8,36</td><td><span class="sev warn">Paketverlust 20 %</span></td></tr><tr><td>15:11</td><td class="num">8</td><td>CRUISE</td><td class="num">35.476</td><td>34,95, -8,36</td><td><span class="sev warn">Latenz erhöht: 1.214 ms (Median 801 ms)</span></td></tr><tr><td>15:11</td><td class="num">8</td><td>CRUISE</td><td class="num">35.476</td><td>34,95, -8,36</td><td><span class="sev warn">DNS langsam: 3.593 ms</span></td></tr><tr><td>15:14</td><td class="num">9</td><td>CRUISE</td><td class="num">35.411</td><td>34,61, -8,70</td><td><span class="sev warn">Paketverlust 30 %</span></td></tr><tr><td>15:14</td><td class="num">9</td><td>CRUISE</td><td class="num">35.411</td><td>34,61, -8,70</td><td><span class="sev warn">Latenz erhöht: 1.382 ms (Median 801 ms)</span></td></tr><tr><td>15:18</td><td class="num">10</td><td>CRUISE</td><td class="num">35.424</td><td>34,24, -9,04</td><td><span class="sev warn">Paketverlust 50 %</span></td></tr><tr><td>15:18</td><td class="num">10</td><td>CRUISE</td><td class="num">35.424</td><td>34,24, -9,04</td><td><span class="sev warn">Latenz erhöht: 1.255 ms (Median 801 ms)</span></td></tr><tr><td>15:18</td><td class="num">10</td><td>CRUISE</td><td class="num">35.424</td><td>34,24, -9,04</td><td><span class="sev warn">DNS langsam: 5.048 ms</span></td></tr><tr><td>15:18</td><td class="num">10</td><td>CRUISE</td><td class="num">35.424</td><td>34,24, -9,04</td><td><span class="sev warn">HTTP-Fehler: cloudflare.com</span></td></tr><tr><td>15:22</td><td class="num">11</td><td>CRUISE</td><td class="num">35.457</td><td>33,87, -9,39</td><td><span class="sev warn">Paketverlust 60 %</span></td></tr><tr><td>15:22</td><td class="num">11</td><td>CRUISE</td><td class="num">35.457</td><td>33,87, -9,39</td><td><span class="sev warn">Latenz erhöht: 1.259 ms (Median 801 ms)</span></td></tr><tr><td>15:25</td><td class="num">12</td><td>CRUISE</td><td class="num">35.454</td><td>33,51, -9,73</td><td><span class="sev warn">DNS langsam: 4.819 ms</span></td></tr><tr><td>15:27</td><td class="num">1</td><td>CRUISE</td><td class="num">35.425</td><td>33,39, -9,84</td><td><span class="sev warn">Paketverlust 30 %</span></td></tr><tr><td>15:53</td><td class="num">1</td><td>CRUISE</td><td class="num">35.221</td><td>30,71, -12,19</td><td><span class="sev warn">DNS langsam: 3.440 ms</span></td></tr><tr><td>15:56</td><td class="num">1</td><td>CRUISE</td><td class="num">35.207</td><td>30,45, -12,40</td><td><span class="sev crit">Ping-Timeout 8.8.8.8</span></td></tr><tr><td>15:56</td><td class="num">1</td><td>CRUISE</td><td class="num">35.207</td><td>30,45, -12,40</td><td><span class="sev warn">Paketverlust 40 %</span></td></tr><tr><td>15:56</td><td class="num">1</td><td>CRUISE</td><td class="num">35.207</td><td>30,45, -12,40</td><td><span class="sev warn">Download eingebrochen: 0,05 Mbit/s</span></td></tr><tr><td>15:57</td><td class="num">8</td><td>CRUISE</td><td class="num">30.499</td><td>30,25, -12,57</td><td><span class="sev warn">Paketverlust 20 %</span></td></tr><tr><td>15:57</td><td class="num">8</td><td>CRUISE</td><td class="num">30.499</td><td>30,25, -12,57</td><td><span class="sev info">Höhenänderung 35.207 → 30.499 ft</span></td></tr><tr><td>15:58</td><td class="num">1</td><td>CRUISE</td><td class="num">27.441</td><td>30,10, -12,68</td><td><span class="sev info">Höhenänderung 30.499 → 27.441 ft</span></td></tr><tr><td>16:00</td><td class="num">1</td><td>CRUISE</td><td class="num">23.788</td><td>29,91, -12,82</td><td><span class="sev info">Höhenänderung 27.441 → 23.788 ft</span></td></tr></tbody></table></div>
+
+<h2>Alle Messrunden</h2>
+<details open><summary>29 Runden, alle Werte (Tabellenansicht zu den Charts)</summary>
+<div class="tablewrap"><table><thead><tr><th class="">Lokal</th><th class="">UTC</th><th class="">Rd</th><th class="">Phase</th><th class="num">Höhe ft</th><th class="num">kts</th><th class="num">Ping 8.8.8.8 ms</th><th class="num">Verlust %</th><th class="num">Ping 1.1.1.1 ms</th><th class="num">Verlust %</th><th class="num">DNS google ms</th><th class="num">DNS cf ms</th><th class="num">TTFB google s</th><th class="num">TTFB cf s</th><th class="num">DL curl Mbit/s</th><th class="num">UL curl Mbit/s</th><th class="">Position</th></tr></thead><tbody><tr><td>14:42:04</td><td>12:42</td><td class="num">1</td><td>CRUISE</td><td class="num">35.433</td><td class="num">470</td><td class="num">850</td><td class="num">0</td><td class="num">779</td><td class="num">0</td><td class="num">1.187</td><td class="num">1.810</td><td class="num">2,43</td><td class="num">3,26</td><td class="num">–</td><td class="num">–</td><td>28,945, -13,605</td></tr><tr><td>14:46:51</td><td>12:46</td><td class="num">1</td><td>CRUISE</td><td class="num">35.463</td><td class="num">476</td><td class="num">784</td><td class="num">0</td><td class="num">789</td><td class="num">0</td><td class="num">1.098</td><td class="num">256</td><td class="num">2,77</td><td class="num">9,65</td><td class="num">–</td><td class="num">–</td><td>37,521, -5,980</td></tr><tr><td>14:49:51</td><td>12:49</td><td class="num">2</td><td>CRUISE</td><td class="num">35.444</td><td class="num">470</td><td class="num">789</td><td class="num">0</td><td class="num">793</td><td class="num">10</td><td class="num">1.699</td><td class="num">2.028</td><td class="num">2,15</td><td class="num">2,60</td><td class="num">–</td><td class="num">–</td><td>37,193, -6,265</td></tr><tr><td>14:52:45</td><td>12:52</td><td class="num">3</td><td>CRUISE</td><td class="num">35.452</td><td class="num">471</td><td class="num">748</td><td class="num">0</td><td class="num">814</td><td class="num">0</td><td class="num">218</td><td class="num">1.051</td><td class="num">2,74</td><td class="num">2,48</td><td class="num">–</td><td class="num">–</td><td>36,870, -6,542</td></tr><tr><td>14:55:59</td><td>12:55</td><td class="num">4</td><td>CRUISE</td><td class="num">35.455</td><td class="num">470</td><td class="num">795</td><td class="num">0</td><td class="num">793</td><td class="num">10</td><td class="num">1.615</td><td class="num">1.061</td><td class="num">6,68</td><td class="num">3,73</td><td class="num">–</td><td class="num">–</td><td>36,556, -6,809</td></tr><tr><td>15:00:24</td><td>13:00</td><td class="num">5</td><td>CRUISE</td><td class="num">35.428</td><td class="num">481</td><td class="num">Timeout</td><td class="num">100</td><td class="num">Timeout</td><td class="num">100</td><td class="num">221</td><td class="num">1.307</td><td class="num">Fehler</td><td class="num">6,90</td><td class="num">–</td><td class="num">–</td><td>36,215, -7,108</td></tr><tr><td>15:04:25</td><td>13:04</td><td class="num">6</td><td>CRUISE</td><td class="num">35.427</td><td class="num">482</td><td class="num">1.316</td><td class="num">50</td><td class="num">1.291</td><td class="num">60</td><td class="num">2.794</td><td class="num">2.213</td><td class="num">4,38</td><td class="num">5,51</td><td class="num">–</td><td class="num">–</td><td>35,753, -7,573</td></tr><tr><td>15:08:07</td><td>13:08</td><td class="num">7</td><td>CRUISE</td><td class="num">35.473</td><td class="num">479</td><td class="num">1.354</td><td class="num">40</td><td class="num">1.277</td><td class="num">30</td><td class="num">250</td><td class="num">1.590</td><td class="num">5,18</td><td class="num">5,76</td><td class="num">–</td><td class="num">–</td><td>35,337, -7,985</td></tr><tr><td>15:11:27</td><td>13:11</td><td class="num">8</td><td>CRUISE</td><td class="num">35.476</td><td class="num">483</td><td class="num">1.105</td><td class="num">0</td><td class="num">1.214</td><td class="num">20</td><td class="num">3.593</td><td class="num">2.228</td><td class="num">2,87</td><td class="num">6,58</td><td class="num">–</td><td class="num">–</td><td>34,952, -8,363</td></tr><tr><td>15:14:57</td><td>13:14</td><td class="num">9</td><td>CRUISE</td><td class="num">35.411</td><td class="num">476</td><td class="num">1.382</td><td class="num">30</td><td class="num">1.291</td><td class="num">0</td><td class="num">1.634</td><td class="num">2.243</td><td class="num">3,12</td><td class="num">3,45</td><td class="num">–</td><td class="num">–</td><td>34,605, -8,697</td></tr><tr><td>15:18:33</td><td>13:18</td><td class="num">10</td><td>CRUISE</td><td class="num">35.424</td><td class="num">472</td><td class="num">1.232</td><td class="num">40</td><td class="num">1.255</td><td class="num">50</td><td class="num">1.494</td><td class="num">5.048</td><td class="num">4,42</td><td class="num">Fehler</td><td class="num">–</td><td class="num">–</td><td>34,244, -9,041</td></tr><tr><td>15:22:06</td><td>13:22</td><td class="num">11</td><td>CRUISE</td><td class="num">35.457</td><td class="num">469</td><td class="num">1.240</td><td class="num">60</td><td class="num">1.259</td><td class="num">0</td><td class="num">528</td><td class="num">368</td><td class="num">2,24</td><td class="num">2,66</td><td class="num">–</td><td class="num">–</td><td>33,873, -9,389</td></tr><tr><td>15:25:38</td><td>13:25</td><td class="num">12</td><td>CRUISE</td><td class="num">35.454</td><td class="num">467</td><td class="num">808</td><td class="num">0</td><td class="num">869</td><td class="num">10</td><td class="num">4.819</td><td class="num">2.235</td><td class="num">2,37</td><td class="num">3,70</td><td class="num">–</td><td class="num">–</td><td>33,506, -9,730</td></tr><tr><td>15:27:14</td><td>13:27</td><td class="num">1</td><td>CRUISE</td><td class="num">35.425</td><td class="num">466</td><td class="num">765</td><td class="num">10</td><td class="num">770</td><td class="num">30</td><td class="num">222</td><td class="num">239</td><td class="num">2,45</td><td class="num">3,17</td><td class="num">0,23</td><td class="num">0,53</td><td>33,389, -9,837</td></tr><tr><td>15:29:32</td><td>13:29</td><td class="num">13</td><td>CRUISE</td><td class="num">35.439</td><td class="num">467</td><td class="num">721</td><td class="num">0</td><td class="num">751</td><td class="num">0</td><td class="num">1.915</td><td class="num">404</td><td class="num">4,67</td><td class="num">2,48</td><td class="num">–</td><td class="num">–</td><td>33,141, -10,064</td></tr><tr><td>15:31:05</td><td>13:31</td><td class="num">1</td><td>CRUISE</td><td class="num">35.436</td><td class="num">470</td><td class="num">683</td><td class="num">0</td><td class="num">788</td><td class="num">10</td><td class="num">216</td><td class="num">1.800</td><td class="num">2,22</td><td class="num">3,39</td><td class="num">0,14</td><td class="num">0,72</td><td>32,973, -10,216</td></tr><tr><td>15:34:44</td><td>13:34</td><td class="num">2</td><td>CRUISE</td><td class="num">35.424</td><td class="num">469</td><td class="num">778</td><td class="num">0</td><td class="num">815</td><td class="num">0</td><td class="num">2.105</td><td class="num">237</td><td class="num">2,78</td><td class="num">3,34</td><td class="num">0,25</td><td class="num">0,44</td><td>32,579, -10,569</td></tr><tr><td>15:38:26</td><td>13:38</td><td class="num">3</td><td>CRUISE</td><td class="num">35.204</td><td class="num">465</td><td class="num">787</td><td class="num">0</td><td class="num">837</td><td class="num">0</td><td class="num">231</td><td class="num">1.682</td><td class="num">2,63</td><td class="num">4,10</td><td class="num">1,31</td><td class="num">0,62</td><td>32,199, -10,905</td></tr><tr><td>15:42:10</td><td>13:42</td><td class="num">4</td><td>CRUISE</td><td class="num">35.245</td><td class="num">459</td><td class="num">685</td><td class="num">0</td><td class="num">755</td><td class="num">10</td><td class="num">1.670</td><td class="num">224</td><td class="num">2,47</td><td class="num">2,62</td><td class="num">0,62</td><td class="num">0,51</td><td>31,820, -11,237</td></tr><tr><td>15:45:53</td><td>13:45</td><td class="num">5</td><td>CRUISE</td><td class="num">35.197</td><td class="num">457</td><td class="num">800</td><td class="num">0</td><td class="num">919</td><td class="num">10</td><td class="num">241</td><td class="num">1.675</td><td class="num">2,77</td><td class="num">3,32</td><td class="num">1,14</td><td class="num">0,49</td><td>31,438, -11,567</td></tr><tr><td>15:49:29</td><td>13:49</td><td class="num">6</td><td>CRUISE</td><td class="num">35.230</td><td class="num">458</td><td class="num">805</td><td class="num">0</td><td class="num">785</td><td class="num">0</td><td class="num">1.845</td><td class="num">225</td><td class="num">2,41</td><td class="num">3,38</td><td class="num">0,73</td><td class="num">0,52</td><td>31,059, -11,891</td></tr><tr><td>15:51:07</td><td>13:51</td><td class="num">1</td><td>CRUISE</td><td class="num">35.203</td><td class="num">458</td><td class="num">704</td><td class="num">0</td><td class="num">734</td><td class="num">10</td><td class="num">204</td><td class="num">264</td><td class="num">2,28</td><td class="num">2,88</td><td class="num">1,14</td><td class="num">0,33</td><td>30,922, -12,008</td></tr><tr><td>15:53:34</td><td>13:53</td><td class="num">1</td><td>CRUISE</td><td class="num">35.221</td><td class="num">459</td><td class="num">801</td><td class="num">10</td><td class="num">845</td><td class="num">0</td><td class="num">2.297</td><td class="num">3.440</td><td class="num">2,87</td><td class="num">2,93</td><td class="num">0,41</td><td class="num">0,07</td><td>30,707, -12,189</td></tr><tr><td>15:53:42</td><td>13:53</td><td class="num">7</td><td>CRUISE</td><td class="num">35.215</td><td class="num">459</td><td class="num">822</td><td class="num">10</td><td class="num">803</td><td class="num">10</td><td class="num">256</td><td class="num">298</td><td class="num">2,83</td><td class="num">2,42</td><td class="num">0,58</td><td class="num">–</td><td>30,690, -12,203</td></tr><tr><td>15:56:52</td><td>13:56</td><td class="num">1</td><td>CRUISE</td><td class="num">35.207</td><td class="num">460</td><td class="num">Timeout</td><td class="num">100</td><td class="num">1.194</td><td class="num">40</td><td class="num">2.217</td><td class="num">221</td><td class="num">7,05</td><td class="num">6,79</td><td class="num">0,05</td><td class="num">0,14</td><td>30,453, -12,403</td></tr><tr><td>15:57:55</td><td>13:57</td><td class="num">8</td><td>CRUISE</td><td class="num">30.499</td><td class="num">477</td><td class="num">793</td><td class="num">10</td><td class="num">758</td><td class="num">20</td><td class="num">206</td><td class="num">237</td><td class="num">2,60</td><td class="num">2,90</td><td class="num">0,49</td><td class="num">0,19</td><td>30,249, -12,572</td></tr><tr><td>15:58:44</td><td>13:58</td><td class="num">1</td><td>CRUISE</td><td class="num">27.441</td><td class="num">447</td><td class="num">798</td><td class="num">0</td><td class="num">852</td><td class="num">0</td><td class="num">2.229</td><td class="num">1.809</td><td class="num">2,73</td><td class="num">2,73</td><td class="num">0,31</td><td class="num">0,38</td><td>30,104, -12,678</td></tr><tr><td>16:00:58</td><td>14:00</td><td class="num">1</td><td>CRUISE</td><td class="num">23.788</td><td class="num">420</td><td class="num">830</td><td class="num">0</td><td class="num">787</td><td class="num">10</td><td class="num">235</td><td class="num">382</td><td class="num">2,87</td><td class="num">3,59</td><td class="num">1,16</td><td class="num">0,14</td><td>29,913, -12,816</td></tr><tr><td>16:01:52</td><td>14:01</td><td class="num">9</td><td>CRUISE</td><td class="num">22.025</td><td class="num">413</td><td class="num">767</td><td class="num">10</td><td class="num">953</td><td class="num">10</td><td class="num">1.199</td><td class="num">237</td><td class="num">2,73</td><td class="num">4,11</td><td class="num">1,21</td><td class="num">0,35</td><td>29,814, -12,887</td></tr></tbody></table></div>
+</details>
+
+<h2>Hinweise</h2>
+<div class="notes"><ul><li>Zeiten sind Laptop-Zeit (lokal); UTC steht daneben. Die ETA der Bord-API ist nach den Daten von Flug 1 UTC.</li><li>Bandbreite (curl) nutzt einen einzelnen TCP-Stream über HTTPS. Bei 700–1400 ms Latenz begrenzt das TCP-Fenster den Wert; die reale Linkkapazität kann höher sein.</li><li>Ping-Timeout = alle 10 Pakete verloren. Grau hinterlegte Bereiche in den Charts markieren diese Runden.</li><li>Dateien im Format von Flug 1 speicherten den Paketverlust als Anzahl verlorener Pakete (von 10). Der Bericht rechnet sie in Prozent um (×10).</li></ul></div>
+
+<footer>Erstellt 18.10.2026 09:59 mit make_report.py · Quellen: wingsconnect_2026-03-31_14-41-07.csv, wingsconnect_2026-03-31_14-44-16.csv, wingsconnect_2026-03-31_14-57-12.csv, wingsconnect_2026-03-31_15-17-34.csv, wingsconnect_2026-03-31_15-25-15.csv, wingsconnect_2026-03-31_15-27-47.csv, wingsconnect_2026-03-31_15-49-12.csv, wingsconnect_2026-03-31_15-51-19.csv, wingsconnect_2026-03-31_15-53-46.csv, wingsconnect_2026-03-31_15-57-05.csv, wingsconnect_2026-03-31_15-58-56.csv</footer>
+</div>
+<script id="report-data" type="application/json">{"minutes": [0.0, 4.783333333333333, 7.783333333333333, 10.683333333333334, 13.916666666666666, 18.333333333333332, 22.35, 26.05, 29.383333333333333, 32.88333333333333, 36.483333333333334, 40.03333333333333, 43.56666666666667, 45.166666666666664, 47.46666666666667, 49.016666666666666, 52.666666666666664, 56.36666666666667, 60.1, 63.81666666666667, 67.41666666666667, 69.05, 71.5, 71.63333333333334, 74.8, 75.85, 76.66666666666667, 78.9, 79.8], "startMin": 882.0666666666667, "labels": ["14:42", "14:46", "14:49", "14:52", "14:55", "15:00", "15:04", "15:08", "15:11", "15:14", "15:18", "15:22", "15:25", "15:27", "15:29", "15:31", "15:34", "15:38", "15:42", "15:45", "15:49", "15:51", "15:53", "15:53", "15:56", "15:57", "15:58", "16:00", "16:01"], "utc": ["12:42", "12:46", "12:49", "12:52", "12:55", "13:00", "13:04", "13:08", "13:11", "13:14", "13:18", "13:22", "13:25", "13:27", "13:29", "13:31", "13:34", "13:38", "13:42", "13:45", "13:49", "13:51", "13:53", "13:53", "13:56", "13:57", "13:58", "14:00", "14:01"], "rounds": [1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 13, 1, 2, 3, 4, 5, 6, 1, 1, 7, 1, 8, 1, 1, 9], "timeout": [false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false], "charts": [{"id": "ping", "title": "Ping-Latenz", "sub": "Mittelwert aus 10 Paketen, in ms", "unit": "ms", "decimals": 0, "series": [{"name": "8.8.8.8", "slot": 1, "values": [850.0, 784.0, 789.0, 748.0, 795.0, null, 1316.0, 1354.0, 1105.0, 1382.0, 1232.0, 1240.0, 808.0, 765.0, 721.0, 683.0, 778.0, 787.0, 685.0, 800.0, 805.0, 704.0, 801.0, 822.0, null, 793.0, 798.0, 830.0, 767.0]}, {"name": "1.1.1.1", "slot": 2, "values": [779.0, 789.0, 793.0, 814.0, 793.0, null, 1291.0, 1277.0, 1214.0, 1291.0, 1255.0, 1259.0, 869.0, 770.0, 751.0, 788.0, 815.0, 837.0, 755.0, 919.0, 785.0, 734.0, 845.0, 803.0, 1194.0, 758.0, 852.0, 787.0, 953.0]}], "bands": [[5, 5], [24, 24]], "nullText": "Timeout"}, {"id": "loss", "title": "Paketverlust", "sub": "Anteil verlorener Ping-Pakete, in %", "unit": "%", "decimals": 0, "series": [{"name": "8.8.8.8", "slot": 1, "values": [0.0, 0.0, 0.0, 0.0, 0.0, 100.0, 50.0, 40.0, 0.0, 30.0, 40.0, 60.0, 0.0, 10.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 10.0, 10.0, 100.0, 10.0, 0.0, 0.0, 10.0]}, {"name": "1.1.1.1", "slot": 2, "values": [0.0, 0.0, 10.0, 0.0, 10.0, 100.0, 60.0, 30.0, 20.0, 0.0, 50.0, 0.0, 10.0, 30.0, 0.0, 10.0, 0.0, 0.0, 10.0, 10.0, 0.0, 10.0, 0.0, 10.0, 40.0, 20.0, 0.0, 10.0, 10.0]}], "bands": [[5, 5], [24, 24]], "minTop": 10}, {"id": "dns", "title": "DNS-Auflösung", "sub": "Dauer von nslookup, in ms", "unit": "ms", "decimals": 0, "series": [{"name": "google.com", "slot": 1, "values": [1187.0, 1098.0, 1699.0, 218.0, 1615.0, 221.0, 2794.0, 250.0, 3593.0, 1634.0, 1494.0, 528.0, 4819.0, 222.0, 1915.0, 216.0, 2105.0, 231.0, 1670.0, 241.0, 1845.0, 204.0, 2297.0, 256.0, 2217.0, 206.0, 2229.0, 235.0, 1199.0]}, {"name": "cloudflare.com", "slot": 2, "values": [1810.0, 256.0, 2028.0, 1051.0, 1061.0, 1307.0, 2213.0, 1590.0, 2228.0, 2243.0, 5048.0, 368.0, 2235.0, 239.0, 404.0, 1800.0, 237.0, 1682.0, 224.0, 1675.0, 225.0, 264.0, 3440.0, 298.0, 221.0, 237.0, 1809.0, 382.0, 237.0]}], "bands": [[5, 5], [24, 24]]}, {"id": "ttfb", "title": "HTTP Time-to-First-Byte", "sub": "curl, Sekunden bis zum ersten Byte", "unit": "s", "decimals": 2, "series": [{"name": "google.com", "slot": 1, "values": [2.431674, 2.766723, 2.154167, 2.736895, 6.684073, null, 4.381825, 5.176763, 2.872643, 3.120524, 4.419243, 2.23715, 2.368815, 2.453033, 4.665289, 2.219703, 2.784654, 2.628435, 2.47279, 2.767981, 2.407885, 2.282295, 2.867344, 2.831502, 7.051781, 2.597383, 2.732113, 2.869843, 2.731671]}, {"name": "cloudflare.com", "slot": 2, "values": [3.257252, 9.651771, 2.599401, 2.48393, 3.732358, 6.902373, 5.50537, 5.763338, 6.582024, 3.450916, null, 2.660701, 3.697623, 3.166158, 2.475457, 3.39083, 3.342743, 4.103883, 2.619847, 3.317777, 3.375582, 2.88191, 2.925993, 2.417853, 6.793056, 2.90355, 2.727645, 3.586452, 4.105391]}], "bands": [[5, 5], [24, 24]], "nullText": "Fehler"}, {"id": "curl", "title": "Bandbreite (curl)", "sub": "5 MB Download / 512 KB Upload über HTTPS, ein TCP-Stream, in Mbit/s", "unit": "Mbit/s", "decimals": 2, "series": [{"name": "Download", "slot": 1, "values": [null, null, null, null, null, null, null, null, null, null, null, null, null, 0.23, null, 0.14, 0.25, 1.31, 0.62, 1.14, 0.73, 1.14, 0.41, 0.58, 0.05, 0.49, 0.31, 1.16, 1.21]}, {"name": "Upload", "slot": 2, "values": [null, null, null, null, null, null, null, null, null, null, null, null, null, 0.53, null, 0.72, 0.44, 0.62, 0.51, 0.49, 0.52, 0.33, 0.07, null, 0.14, 0.19, 0.38, 0.14, 0.35]}], "bands": [[5, 5], [24, 24]]}, {"id": "alt", "title": "Flughöhe", "sub": "in ft, Wechsel der Flugphase markiert", "unit": "ft", "decimals": 0, "series": [{"name": "Höhe", "slot": 1, "values": [35433.0, 35463.0, 35444.0, 35452.0, 35455.0, 35428.0, 35427.0, 35473.0, 35476.0, 35411.0, 35424.0, 35457.0, 35454.0, 35425.0, 35439.0, 35436.0, 35424.0, 35204.0, 35245.0, 35197.0, 35230.0, 35203.0, 35221.0, 35215.0, 35207.0, 30499.0, 27441.0, 23788.0, 22025.0]}], "area": true, "markers": [], "half": true}, {"id": "speed", "title": "Geschwindigkeit über Grund", "sub": "in kts", "unit": "kts", "decimals": 0, "series": [{"name": "Speed", "slot": 1, "values": [470.0, 476.0, 470.0, 471.0, 470.0, 481.0, 482.0, 479.0, 483.0, 476.0, 472.0, 469.0, 467.0, 466.0, 467.0, 470.0, 469.0, 465.0, 459.0, 457.0, 458.0, 458.0, 459.0, 459.0, 460.0, 477.0, 447.0, 420.0, 413.0]}], "half": true}], "track": [{"i": 0, "lat": 28.945499, "lon": -13.6052, "ping": 779.0, "timeout": false, "tip": [["35.433 ft", "Höhe"], ["CRUISE", "Phase"], ["779 ms", "Ping"], ["–", "Download"], ["28,945, -13,605", "Position"]]}, {"i": 1, "lat": 37.521400451660156, "lon": -5.980167388916016, "ping": 784.0, "timeout": false, "tip": [["35.463 ft", "Höhe"], ["CRUISE", "Phase"], ["784 ms", "Ping"], ["–", "Download"], ["37,521, -5,980", "Position"]]}, {"i": 2, "lat": 37.19266891479492, "lon": -6.265125274658203, "ping": 789.0, "timeout": false, "tip": [["35.444 ft", "Höhe"], ["CRUISE", "Phase"], ["789 ms", "Ping"], ["–", "Download"], ["37,193, -6,265", "Position"]]}, {"i": 3, "lat": 36.87028884887695, "lon": -6.5416717529296875, "ping": 748.0, "timeout": false, "tip": [["35.452 ft", "Höhe"], ["CRUISE", "Phase"], ["748 ms", "Ping"], ["–", "Download"], ["36,870, -6,542", "Position"]]}, {"i": 4, "lat": 36.55580520629883, "lon": -6.808948516845703, "ping": 793.0, "timeout": false, "tip": [["35.455 ft", "Höhe"], ["CRUISE", "Phase"], ["793 ms", "Ping"], ["–", "Download"], ["36,556, -6,809", "Position"]]}, {"i": 5, "lat": 36.21471405029297, "lon": -7.107810974121094, "ping": null, "timeout": true, "tip": [["35.428 ft", "Höhe"], ["CRUISE", "Phase"], ["Timeout", "Ping"], ["–", "Download"], ["36,215, -7,108", "Position"]]}, {"i": 6, "lat": 35.75328826904297, "lon": -7.572669982910156, "ping": 1291.0, "timeout": false, "tip": [["35.427 ft", "Höhe"], ["CRUISE", "Phase"], ["1.291 ms", "Ping"], ["–", "Download"], ["35,753, -7,573", "Position"]]}, {"i": 7, "lat": 35.33735275268555, "lon": -7.985343933105469, "ping": 1277.0, "timeout": false, "tip": [["35.473 ft", "Höhe"], ["CRUISE", "Phase"], ["1.277 ms", "Ping"], ["–", "Download"], ["35,337, -7,985", "Position"]]}, {"i": 8, "lat": 34.951629638671875, "lon": -8.36282730102539, "ping": 1105.0, "timeout": false, "tip": [["35.476 ft", "Höhe"], ["CRUISE", "Phase"], ["1.105 ms", "Ping"], ["–", "Download"], ["34,952, -8,363", "Position"]]}, {"i": 9, "lat": 34.60538864135742, "lon": -8.697052001953125, "ping": 1291.0, "timeout": false, "tip": [["35.411 ft", "Höhe"], ["CRUISE", "Phase"], ["1.291 ms", "Ping"], ["–", "Download"], ["34,605, -8,697", "Position"]]}, {"i": 10, "lat": 34.24421310424805, "lon": -9.041061401367188, "ping": 1232.0, "timeout": false, "tip": [["35.424 ft", "Höhe"], ["CRUISE", "Phase"], ["1.232 ms", "Ping"], ["–", "Download"], ["34,244, -9,041", "Position"]]}, {"i": 11, "lat": 33.8734245300293, "lon": -9.389362335205078, "ping": 1240.0, "timeout": false, "tip": [["35.457 ft", "Höhe"], ["CRUISE", "Phase"], ["1.240 ms", "Ping"], ["–", "Download"], ["33,873, -9,389", "Position"]]}, {"i": 12, "lat": 33.50555419921875, "lon": -9.730281829833984, "ping": 808.0, "timeout": false, "tip": [["35.454 ft", "Höhe"], ["CRUISE", "Phase"], ["808 ms", "Ping"], ["–", "Download"], ["33,506, -9,730", "Position"]]}, {"i": 13, "lat": 33.389339447021484, "lon": -9.837055206298828, "ping": 765.0, "timeout": false, "tip": [["35.425 ft", "Höhe"], ["CRUISE", "Phase"], ["765 ms", "Ping"], ["0,23 Mbit/s", "Download"], ["33,389, -9,837", "Position"]]}, {"i": 14, "lat": 33.14094543457031, "lon": -10.063819885253906, "ping": 721.0, "timeout": false, "tip": [["35.439 ft", "Höhe"], ["CRUISE", "Phase"], ["721 ms", "Ping"], ["–", "Download"], ["33,141, -10,064", "Position"]]}, {"i": 15, "lat": 32.97340393066406, "lon": -10.215568542480469, "ping": 683.0, "timeout": false, "tip": [["35.436 ft", "Höhe"], ["CRUISE", "Phase"], ["683 ms", "Ping"], ["0,14 Mbit/s", "Download"], ["32,973, -10,216", "Position"]]}, {"i": 16, "lat": 32.57944107055664, "lon": -10.569019317626953, "ping": 778.0, "timeout": false, "tip": [["35.424 ft", "Höhe"], ["CRUISE", "Phase"], ["778 ms", "Ping"], ["0,25 Mbit/s", "Download"], ["32,579, -10,569", "Position"]]}, {"i": 17, "lat": 32.19921112060547, "lon": -10.905475616455078, "ping": 787.0, "timeout": false, "tip": [["35.204 ft", "Höhe"], ["CRUISE", "Phase"], ["787 ms", "Ping"], ["1,31 Mbit/s", "Download"], ["32,199, -10,905", "Position"]]}, {"i": 18, "lat": 31.81966781616211, "lon": -11.237297058105469, "ping": 685.0, "timeout": false, "tip": [["35.245 ft", "Höhe"], ["CRUISE", "Phase"], ["685 ms", "Ping"], ["0,62 Mbit/s", "Download"], ["31,820, -11,237", "Position"]]}, {"i": 19, "lat": 31.43840789794922, "lon": -11.566715240478516, "ping": 800.0, "timeout": false, "tip": [["35.197 ft", "Höhe"], ["CRUISE", "Phase"], ["800 ms", "Ping"], ["1,14 Mbit/s", "Download"], ["31,438, -11,567", "Position"]]}, {"i": 20, "lat": 31.058521270751953, "lon": -11.891326904296875, "ping": 785.0, "timeout": false, "tip": [["35.230 ft", "Höhe"], ["CRUISE", "Phase"], ["785 ms", "Ping"], ["0,73 Mbit/s", "Download"], ["31,059, -11,891", "Position"]]}, {"i": 21, "lat": 30.921707153320312, "lon": -12.007713317871094, "ping": 704.0, "timeout": false, "tip": [["35.203 ft", "Höhe"], ["CRUISE", "Phase"], ["704 ms", "Ping"], ["1,14 Mbit/s", "Download"], ["30,922, -12,008", "Position"]]}, {"i": 22, "lat": 30.70730209350586, "lon": -12.188987731933594, "ping": 801.0, "timeout": false, "tip": [["35.221 ft", "Höhe"], ["CRUISE", "Phase"], ["801 ms", "Ping"], ["0,41 Mbit/s", "Download"], ["30,707, -12,189", "Position"]]}, {"i": 23, "lat": 30.690135955810547, "lon": -12.203407287597656, "ping": 803.0, "timeout": false, "tip": [["35.215 ft", "Höhe"], ["CRUISE", "Phase"], ["803 ms", "Ping"], ["0,58 Mbit/s", "Download"], ["30,690, -12,203", "Position"]]}, {"i": 24, "lat": 30.452556610107422, "lon": -12.402877807617188, "ping": 1194.0, "timeout": true, "tip": [["35.207 ft", "Höhe"], ["CRUISE", "Phase"], ["1.194 ms", "Ping"], ["0,05 Mbit/s", "Download"], ["30,453, -12,403", "Position"]]}, {"i": 25, "lat": 30.249309539794922, "lon": -12.572479248046875, "ping": 758.0, "timeout": false, "tip": [["30.499 ft", "Höhe"], ["CRUISE", "Phase"], ["758 ms", "Ping"], ["0,49 Mbit/s", "Download"], ["30,249, -12,572", "Position"]]}, {"i": 26, "lat": 30.104427337646484, "lon": -12.678050994873047, "ping": 798.0, "timeout": false, "tip": [["27.441 ft", "Höhe"], ["CRUISE", "Phase"], ["798 ms", "Ping"], ["0,31 Mbit/s", "Download"], ["30,104, -12,678", "Position"]]}, {"i": 27, "lat": 29.91250991821289, "lon": -12.816410064697266, "ping": 787.0, "timeout": false, "tip": [["23.788 ft", "Höhe"], ["CRUISE", "Phase"], ["787 ms", "Ping"], ["1,16 Mbit/s", "Download"], ["29,913, -12,816", "Position"]]}, {"i": 28, "lat": 29.814319610595703, "lon": -12.887134552001953, "ping": 767.0, "timeout": false, "tip": [["22.025 ft", "Höhe"], ["CRUISE", "Phase"], ["767 ms", "Ping"], ["1,21 Mbit/s", "Download"], ["29,814, -12,887", "Position"]]}]}</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('report-data').textContent);
+  const M = D.minutes, N = M.length;
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function hhmm(min) { min = ((Math.round(min) % 1440) + 1440) % 1440;
+    return String(Math.floor(min / 60)).padStart(2, '0') + ':' + String(min % 60).padStart(2, '0'); }
+  function fmtNum(v, d) { return v == null ? '–' : v.toLocaleString('de-DE', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+  function compact(v) { return Math.abs(v) >= 1000 ? (v / 1000).toLocaleString('de-DE', { maximumFractionDigits: 1 }) + 'K'
+    : v.toLocaleString('de-DE', { maximumFractionDigits: 2 }); }
+  function niceStep(raw) { const p = Math.pow(10, Math.floor(Math.log10(raw))); const f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p; }
+  function yScale(maxVal) { if (!(maxVal > 0)) maxVal = 1; const step = niceStep(maxVal / 4);
+    const top = Math.ceil(maxVal / step - 1e-9) * step; const ticks = [];
+    for (let t = 0; t <= top + 1e-9; t += step) ticks.push(+t.toFixed(6)); return { top, ticks }; }
+  function xTicks() { const span = Math.max(M[N - 1] - M[0], 1); const steps = [5, 10, 15, 20, 30, 60, 120, 180];
+    const step = steps.find(s => span / s <= 8) || 240; const out = [];
+    const first = Math.ceil((D.startMin + M[0]) / step) * step;
+    for (let t = first; t <= D.startMin + M[N - 1] + 1e-9; t += step) out.push(t - D.startMin); return out; }
+  function segments(values) { const segs = []; let cur = [];
+    values.forEach((v, i) => { if (v == null) { if (cur.length) segs.push(cur); cur = []; } else cur.push(i); });
+    if (cur.length) segs.push(cur); return segs; }
+
+  // ---- Tooltip (eins für alle Charts)
+  const tip = document.createElement('div'); tip.className = 'tip'; document.body.appendChild(tip);
+  function showTip(x, y, head, rows) {
+    tip.replaceChildren();
+    const h = document.createElement('div'); h.className = 'tip-h'; h.textContent = head; tip.appendChild(h);
+    rows.forEach(r => {
+      const d = document.createElement('div'); d.className = 'tip-r';
+      if (r.color) { const k = document.createElement('span'); k.className = 'key'; k.style.background = r.color; d.appendChild(k); }
+      const v = document.createElement('strong'); v.textContent = r.value; d.appendChild(v);
+      const n = document.createElement('span'); n.className = 'tip-n'; n.textContent = r.name; d.appendChild(n);
+      tip.appendChild(d);
+    });
+    tip.style.display = 'block';
+    const pad = 14, bw = tip.offsetWidth, bh = tip.offsetHeight;
+    let tx = x + pad, ty = y + pad;
+    if (tx + bw > window.innerWidth - 8) tx = x - bw - pad;
+    if (ty + bh > window.innerHeight - 8) ty = y - bh - pad;
+    tip.style.left = tx + 'px'; tip.style.top = ty + 'px';
+  }
+  function hideTip() { tip.style.display = 'none'; }
+
+  // ---- Zeitreihen-Chart
+  function renderChart(card, cfg) {
+    const plot = card.querySelector('.plot'); plot.replaceChildren();
+    const W = plot.clientWidth || 600, H = cfg.half ? 200 : 240;
+    const allVals = cfg.series.flatMap(s => s.values).filter(v => v != null);
+    if (!allVals.length) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = 'Keine Daten'; plot.appendChild(p); return; }
+    const ys = yScale(Math.max(Math.max(...allVals), cfg.minTop || 0));
+    const yLabels = ys.ticks.map(compact);
+    const L = Math.max(...yLabels.map(s => s.length)) * 7 + 14, R = 14, T = 12, B = 30;
+    const pw = Math.max(W - L - R, 50), ph = H - T - B;
+    const span = Math.max(M[N - 1] - M[0], 1e-9);
+    const x = i => L + (N > 1 ? (M[i] - M[0]) / span * pw : pw / 2);
+    const y = v => T + ph - v / ys.top * ph;
+    const svg = el('svg', { width: W, height: H, viewBox: `0 0 ${W} ${H}` }, plot);
+
+    (cfg.bands || []).forEach(([i0, i1]) => {
+      const x0 = i0 > 0 ? (x(i0 - 1) + x(i0)) / 2 : L, x1 = i1 < N - 1 ? (x(i1) + x(i1 + 1)) / 2 : L + pw;
+      el('rect', { x: x0, y: T, width: Math.max(2, x1 - x0), height: ph, class: 'band' }, svg);
+    });
+    ys.ticks.forEach((t, k) => {
+      el('line', { x1: L, x2: L + pw, y1: y(t), y2: y(t), class: k === 0 ? 'baseline' : 'grid' }, svg);
+      const tx = el('text', { x: L - 8, y: y(t) + 4, class: 'tick', 'text-anchor': 'end' }, svg); tx.textContent = yLabels[k];
+    });
+    xTicks().forEach(m => {
+      const xx = L + (m - M[0]) / span * pw; if (xx < L - 1 || xx > L + pw + 1) return;
+      el('line', { x1: xx, x2: xx, y1: T + ph, y2: T + ph + 4, class: 'baseline' }, svg);
+      const t = el('text', { x: xx, y: T + ph + 18, class: 'tick', 'text-anchor': 'middle' }, svg); t.textContent = hhmm(D.startMin + m);
+    });
+    (cfg.markers || []).forEach(([i, label]) => {
+      el('line', { x1: x(i), x2: x(i), y1: T, y2: T + ph, class: 'marker' }, svg);
+      const t = el('text', { x: x(i) + 4, y: T + 11, class: 'marker-label' }, svg); t.textContent = label;
+    });
+    cfg.series.forEach(s => {
+      const color = `var(--series-${s.slot})`;
+      const segs = segments(s.values);
+      if (cfg.area) segs.filter(sg => sg.length > 1).forEach(sg => {
+        const d = `M${x(sg[0]).toFixed(1)} ${y(0).toFixed(1)} ` + sg.map(i => `L${x(i).toFixed(1)} ${y(s.values[i]).toFixed(1)}`).join(' ')
+          + ` L${x(sg[sg.length - 1]).toFixed(1)} ${y(0).toFixed(1)} Z`;
+        el('path', { d, class: 'area', style: `fill:${color}` }, svg);
+      });
+      const d = segs.filter(sg => sg.length > 1).map(sg => sg.map((i, k) => `${k ? 'L' : 'M'}${x(i).toFixed(1)} ${y(s.values[i]).toFixed(1)}`).join(' ')).join(' ');
+      if (d) el('path', { d, class: 'line', style: `stroke:${color}` }, svg);
+      if (N <= 40) s.values.forEach((v, i) => { if (v != null) el('circle', { cx: x(i), cy: y(v), r: 4, class: 'dot', style: `fill:${color}` }, svg); });
+      else segs.forEach(sg => { if (sg.length === 1) el('circle', { cx: x(sg[0]), cy: y(s.values[sg[0]]), r: 4, class: 'dot', style: `fill:${color}` }, svg); });
+    });
+    const ch = el('line', { x1: 0, x2: 0, y1: T, y2: T + ph, class: 'crosshair', style: 'display:none' }, svg);
+    const hit = el('rect', { x: L, y: T, width: pw, height: ph, class: 'hit' }, svg);
+    hit.addEventListener('pointermove', e => {
+      const px = e.clientX - svg.getBoundingClientRect().left;
+      let best = 0, bd = Infinity;
+      for (let i = 0; i < N; i++) { const dd = Math.abs(x(i) - px); if (dd < bd) { bd = dd; best = i; } }
+      ch.setAttribute('x1', x(best)); ch.setAttribute('x2', x(best)); ch.style.display = '';
+      const rows = cfg.series.map(s => ({ color: `var(--series-${s.slot})`, name: s.name,
+        value: s.values[best] == null ? (cfg.nullText || '–') : fmtNum(s.values[best], cfg.decimals) + ' ' + cfg.unit }));
+      if (D.timeout[best] && cfg.id !== 'ping') rows.push({ value: 'Timeout', name: 'Ping-Ausfall in dieser Runde' });
+      showTip(e.clientX, e.clientY, D.labels[best] + ' Uhr' + (D.utc[best] ? ' (' + D.utc[best] + ' UTC)' : '') + ' · Runde ' + D.rounds[best], rows);
+    });
+    hit.addEventListener('pointerleave', () => { ch.style.display = 'none'; hideTip(); });
+
+    const lg = card.querySelector('.legend'); lg.replaceChildren();
+    if (cfg.series.length >= 2) cfg.series.forEach(s => {
+      const it = document.createElement('span'); it.className = 'lg-item';
+      const k = document.createElement('span'); k.className = 'key'; k.style.background = `var(--series-${s.slot})`;
+      it.appendChild(k); it.appendChild(document.createTextNode(s.name)); lg.appendChild(it);
+    });
+    if ((cfg.bands || []).length) {
+      const it = document.createElement('span'); it.className = 'lg-item';
+      const k = document.createElement('span'); k.className = 'key band-key';
+      it.appendChild(k); it.appendChild(document.createTextNode('Ping-Timeout')); lg.appendChild(it);
+    }
+  }
+
+  // ---- Flugspur
+  function renderMap(card) {
+    const plot = card.querySelector('.plot'); plot.replaceChildren();
+    const lg = card.querySelector('.legend'); lg.replaceChildren();
+    const P = D.track.filter(p => p.lat != null && p.lon != null);
+    if (P.length < 2) { const p = document.createElement('p'); p.className = 'empty'; p.textContent = 'Keine Positionsdaten'; plot.appendChild(p); return; }
+    const W = plot.clientWidth || 600;
+    const lats = P.map(p => p.lat), lons = P.map(p => p.lon);
+    let minLat = Math.min(...lats), maxLat = Math.max(...lats), minLon = Math.min(...lons), maxLon = Math.max(...lons);
+    const k = Math.cos((minLat + maxLat) / 2 * Math.PI / 180);
+    const padLat = Math.max((maxLat - minLat) * 0.12, 0.15), padLon = Math.max((maxLon - minLon) * 0.12, 0.15);
+    minLat -= padLat; maxLat += padLat; minLon -= padLon; maxLon += padLon;
+    const L = 44, R = 14, T = 12, B = 26, pw = Math.max(W - L - R, 50);
+    const ph = Math.max(180, Math.min(480, pw * (maxLat - minLat) / ((maxLon - minLon) * k)));
+    const scale = Math.min(pw / ((maxLon - minLon) * k), ph / (maxLat - minLat));
+    const cx = (minLon + maxLon) / 2, cy = (minLat + maxLat) / 2;
+    const X = lon => L + pw / 2 + (lon - cx) * k * scale, Y = lat => T + ph / 2 - (lat - cy) * scale;
+    const svg = el('svg', { width: W, height: T + ph + B, viewBox: `0 0 ${W} ${T + ph + B}` }, plot);
+    el('rect', { x: L, y: T, width: pw, height: ph, fill: 'none', class: 'baseline' }, svg);
+
+    // Gradnetz
+    const visLon0 = cx - (pw / 2) / (k * scale), visLon1 = cx + (pw / 2) / (k * scale);
+    const visLat0 = cy - (ph / 2) / scale, visLat1 = cy + (ph / 2) / scale;
+    const maxSpan = Math.max(visLon1 - visLon0, visLat1 - visLat0);
+    const step = [0.25, 0.5, 1, 2, 5, 10].find(s => maxSpan / s <= 8) || 20;
+    for (let lo = Math.ceil(visLon0 / step) * step; lo <= visLon1; lo += step) {
+      el('line', { x1: X(lo), x2: X(lo), y1: T, y2: T + ph, class: 'grid' }, svg);
+      const t = el('text', { x: X(lo), y: T + ph + 16, class: 'tick', 'text-anchor': 'middle' }, svg);
+      t.textContent = Math.abs(lo).toLocaleString('de-DE') + '°' + (lo < 0 ? 'W' : 'E');
+    }
+    for (let la = Math.ceil(visLat0 / step) * step; la <= visLat1; la += step) {
+      el('line', { x1: L, x2: L + pw, y1: Y(la), y2: Y(la), class: 'grid' }, svg);
+      const t = el('text', { x: L - 6, y: Y(la) + 4, class: 'tick', 'text-anchor': 'end' }, svg);
+      t.textContent = Math.abs(la).toLocaleString('de-DE') + '°' + (la < 0 ? 'S' : 'N');
+    }
+    el('polyline', { points: P.map(p => `${X(p.lon).toFixed(1)},${Y(p.lat).toFixed(1)}`).join(' '), class: 'track' }, svg);
+
+    // Farbe = Ping (sequenziell, 5 Stufen)
+    const pings = P.filter(p => p.ping != null).map(p => p.ping);
+    const pmin = pings.length ? Math.min(...pings) : 0, pmax = pings.length ? Math.max(...pings) : 1;
+    const bin = v => pmax > pmin ? Math.min(4, Math.floor((v - pmin) / (pmax - pmin) * 5)) : 2;
+    P.forEach(p => {
+      if (p.timeout && p.ping == null) el('circle', { cx: X(p.lon), cy: Y(p.lat), r: 6, class: 'pt-timeout' }, svg);
+      else el('circle', { cx: X(p.lon), cy: Y(p.lat), r: 4.5, class: 'pt', style: `fill:var(--seq-${bin(p.ping) + 1})` }, svg);
+    });
+    P.forEach(p => {
+      const h = el('circle', { cx: X(p.lon), cy: Y(p.lat), r: 12, class: 'hit' }, svg);
+      h.addEventListener('pointermove', e => showTip(e.clientX, e.clientY,
+        D.labels[p.i] + ' Uhr · Runde ' + D.rounds[p.i], p.tip.map(([value, name]) => ({ value, name }))));
+      h.addEventListener('pointerleave', hideTip);
+    });
+    const a = P[0], b = P[P.length - 1];
+    [[a, 'Start ' + D.labels[a.i]], [b, 'Ende ' + D.labels[b.i]]].forEach(([p, label]) => {
+      const left = X(p.lon) < L + pw / 2;
+      const t = el('text', { x: X(p.lon) + (left ? 10 : -10), y: Y(p.lat) + 4, class: 'map-label', 'text-anchor': left ? 'start' : 'end' }, svg);
+      t.textContent = label;
+    });
+
+    if (pings.length) {
+      const w = (pmax - pmin) / 5;
+      for (let i = 0; i < 5; i++) {
+        const it = document.createElement('span'); it.className = 'lg-item';
+        const kk = document.createElement('span'); kk.className = 'key dotkey'; kk.style.background = `var(--seq-${i + 1})`;
+        it.appendChild(kk);
+        it.appendChild(document.createTextNode(pmax > pmin ? `${Math.round(pmin + i * w)}–${Math.round(pmin + (i + 1) * w)} ms` : `${Math.round(pmin)} ms`));
+        lg.appendChild(it);
+      }
+    }
+    if (P.some(p => p.timeout && p.ping == null)) {
+      const it = document.createElement('span'); it.className = 'lg-item';
+      const kk = document.createElement('span'); kk.className = 'key ring'; it.appendChild(kk);
+      it.appendChild(document.createTextNode('Ping-Timeout')); lg.appendChild(it);
+    }
+  }
+
+  function renderAll() {
+    D.charts.forEach(cfg => { const card = document.querySelector(`[data-chart="${cfg.id}"]`); if (card) renderChart(card, cfg); });
+    const map = document.querySelector('[data-map]'); if (map) renderMap(map);
+  }
+  let raf = 0;
+  new ResizeObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(renderAll); }).observe(document.body);
+  renderAll();
+
+  // ---- Theme-Umschalter
+  const btn = document.getElementById('theme');
+  function applyTheme(t) { if (t) document.documentElement.setAttribute('data-theme', t); else document.documentElement.removeAttribute('data-theme'); }
+  try { applyTheme(localStorage.getItem('wc-theme')); } catch (e) {}
+  btn.addEventListener('click', () => {
+    const dark = getComputedStyle(document.documentElement).colorScheme.includes('dark');
+    const next = dark ? 'light' : 'dark'; applyTheme(next);
+    try { localStorage.setItem('wc-theme', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

@@ -269,7 +269,7 @@ foreach ($n in $WuNames) {
     if ($n -like '*StartTime') { Set-RegValue $WuPath $n $start 'String' } else { Set-RegValue $WuPath $n $end 'String' }
 }
 foreach ($svc in 'wuauserv', 'UsoSvc', 'DoSvc') {
-    try { Stop-Service $svc -Force -ErrorAction Stop; Log "  Dienst $svc gestoppt" } catch { Log "  Dienst $svc: $($_.Exception.Message.Trim())" 'Yellow' }
+    try { Stop-Service $svc -Force -ErrorAction Stop; Log "  Dienst $svc gestoppt" } catch { Log "  Dienst ${svc}: $($_.Exception.Message.Trim())" 'Yellow' }
 }
 Log "  Pause bis $end" 'Green'
 

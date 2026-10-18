@@ -77,7 +77,7 @@ Fehlwerte: `N/A` (nicht gemessen), `timeout` / `error` (Messung fehlgeschlagen).
 ### Vor dem Flug (zu Hause / am Flughafen)
 
 - [ ] `bash test_connection.sh --once` läuft fehlerfrei durch („Flugdaten nicht verfügbar“ ist außerhalb des Flugzeugs normal)
-- [ ] Laptop vorbereiten: `prepare_laptop.ps1` als Administrator (kein Standby, kein Zuklappen-Schlaf, Updates pausiert, Cloud-Sync gestoppt) – Details im Skript
+- [ ] Laptop vorbereiten: `.\prepare_laptop.ps1` in PowerShell (fordert Adminrechte per UAC an): kein Standby, Zuklappen ohne Schlaf, WLAN volle Leistung, Windows Update pausiert, Cloud-Sync gestoppt, Uhr synchronisiert. Nach dem Flug: `.\prepare_laptop.ps1 -Restore`
 - [ ] Akku voll, Netzteil dabei (A320 der Eurowings haben meist USB-A, selten Steckdosen)
 - [ ] Logs des Vortags gesichert / committet
 
@@ -93,12 +93,28 @@ Fehlwerte: `N/A` (nicht gemessen), `timeout` / `error` (Messung fehlgeschlagen).
 ### Danach
 
 ```bash
-# Rohdaten sichern (werden von .gitignore ausgenommen) – z.B. in einen Ordner kopieren
-cp logs/wingsconnect_2026-10-18_EW9444.* <Sicherungsort>/
+# Rohdaten sichern = committen und pushen (logs/ liegt komplett im Repo)
+git add -A && git commit -m "Messdaten EW9444" && git push
+
+# HTML-Bericht erzeugen (eine Datei, offline nutzbar) und im Browser öffnen
+/c/Python313/python make_report.py --flight EW9444 --open
 
 # Schnellblick: Höhe, Phase, Ping, Verlust, Download pro Runde
 cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9444.csv | column -t -s','
 ```
+
+## HTML-Bericht
+
+`make_report.py` liest die CSV-Dateien (altes Format von Flug 1 und neues Format), optional die `.jsonl`-Rohdaten, und schreibt einen eigenständigen Bericht nach `logs/REPORT_<Datum>_<Flug>.html` mit Kennzahlen, Zeitreihen (Ping, Verlust, DNS, TTFB, Bandbreite, Höhe, Speed), Flugspur, Ereignisliste und vollständiger Tabelle. Hell/Dunkel folgt dem System, Tooltips per Maus.
+
+```bash
+/c/Python313/python make_report.py --flight EW9444              # alle logs/wingsconnect_*_EW9444.csv
+/c/Python313/python make_report.py --flight EW9444 --date 2026-10-18 --open
+/c/Python313/python make_report.py logs/wingsconnect_2026-03-31_*.csv --flight EWG39C --route "DUS → ACE" \
+    -o logs/REPORT_2026-03-31_EWG39C_DUS-ACE.html                 # Flug 1 (altes Format, 10 Teildateien)
+```
+
+Hinweis zu Flug 1: Das alte Skript speicherte den Paketverlust als *Anzahl* verlorener Pakete (von 10), nicht in Prozent. Der Bericht rechnet das um (×10); die Werte im Markdown-Bericht vom 31.03. („0–6 %“) sind entsprechend 0–60 %.
 
 ## Abhängigkeiten
 
