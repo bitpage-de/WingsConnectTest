@@ -108,6 +108,7 @@ cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9444.csv | column -t
 `make_report.py` liest die CSV-Dateien (altes Format von Flug 1 und neues Format), optional die `.jsonl`-Rohdaten, und schreibt einen eigenständigen Bericht nach `logs/REPORT_<Datum>_<Flug>.html` mit Kennzahlen, Zeitreihen (Ping, Verlust, DNS, TTFB, Bandbreite, Höhe, Speed), Flugspur, Ereignisliste und vollständiger Tabelle. Hell/Dunkel folgt dem System, Tooltips per Maus.
 
 ```bash
+/c/Python313/python make_report.py --flight EW9444 --summary    # Kurzstatus im Terminal, kein HTML
 /c/Python313/python make_report.py --flight EW9444              # alle logs/wingsconnect_*_EW9444.csv
 /c/Python313/python make_report.py --flight EW9444 --date 2026-10-18 --open
 /c/Python313/python make_report.py logs/wingsconnect_2026-03-31_*.csv --flight EWG39C --route "DUS → ACE" \

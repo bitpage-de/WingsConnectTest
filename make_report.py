@@ -781,6 +781,28 @@ def render_html(rows, payload, meta, events, sources):
 """
 
 
+# ----------------------------------------------------------------- Textzusammenfassung
+def text_summary(rows, meta, events, last=5):
+    """Kompakter Status für Terminal/Chat (--summary): Kennzahlen, letzte Runden, Auffälligkeiten."""
+    lines = [meta["title"], "  " + " · ".join(m for m in meta["line"] if m), ""]
+    for label, value, sub in kpi_tiles(rows):
+        lines.append(f"  {label + ':':<22}{value:>16}   {sub}")
+    lines.append("")
+    lines.append(f"Letzte {min(last, len(rows))} Runden:  Zeit   Rd  Phase    Höhe ft  Ping 8.8.8.8  Ping 1.1.1.1  Verlust  DL curl")
+    for r in rows[-last:]:
+        p1 = "Timeout" if r["p1_timeout"] else fmt(r["p1_avg"], 0, "ms")
+        p2 = "Timeout" if r["p2_timeout"] else fmt(r["p2_avg"], 0, "ms")
+        loss = max([x for x in (r["p1_loss"], r["p2_loss"]) if x is not None] or [None])
+        lines.append(f"  {r['t_local'].strftime('%H:%M'):>22}  {r['round']:>3}  {(r['phase'] or '–'):<8} {fmt(r['alt']):>8} "
+                     f"{p1:>12}  {p2:>12}  {fmt(loss, 0, '%'):>7}  {fmt(r['curl_dl'], 2):>7}")
+    notable = [(i, s, m) for i, s, m in events if s != "info"]
+    lines.append("")
+    lines.append(f"Auffälligkeiten: {len(notable)}" + (f" (letzte {min(8, len(notable))})" if len(notable) > 8 else ""))
+    for i, _, msg in notable[-8:]:
+        lines.append(f"  {rows[i]['t_local'].strftime('%H:%M')}  {msg}")
+    return "\n".join(lines)
+
+
 # ----------------------------------------------------------------- Hauptprogramm
 def build_meta(rows, info, args, flight_id):
     callsign = first(rows, "callsign") or info.get("callSign") or flight_id
@@ -823,6 +845,8 @@ def main():
     ap.add_argument("--title", help="Titel überschreiben")
     ap.add_argument("--route", help='Route für die Kopfzeile, z.B. "DUS → BCN"')
     ap.add_argument("--open", action="store_true", help="Bericht danach im Browser öffnen")
+    ap.add_argument("--summary", action="store_true", help="nur kurze Textzusammenfassung ausgeben, kein HTML")
+    ap.add_argument("--last", type=int, default=5, help="Anzahl der letzten Runden in --summary (Standard 5)")
     args = ap.parse_args()
 
     files = []
@@ -847,6 +871,10 @@ def main():
     payload = build_payload(rows)
     events = detect_events(rows)
     sources = [os.path.basename(f) for f in files] + [os.path.basename(j) for j in jsonl]
+
+    if args.summary:
+        print(text_summary(rows, meta, events, args.last))
+        return
 
     out = args.output or os.path.join(LOG_DIR, f"REPORT_{rows[0]['t_local'].strftime('%Y-%m-%d')}_{meta['callsign']}.html")
     with open(out, "w", encoding="utf-8") as f:
