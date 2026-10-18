@@ -1,0 +1,2 @@
+timestamp,round,altitude_ft,ground_speed_kts,temperature_c,lat,lon,flight_phase,dist_dest_nm,eta,ping_8888_avg_ms,ping_8888_loss_pct,ping_1111_avg_ms,ping_1111_loss_pct,dns_google_ms,dns_cloudflare_ms,http_google_ttfb_s,http_google_total_s,http_cloudflare_ttfb_s,http_cloudflare_total_s,iperf_dl_mbps,iperf_ul_mbps
+2026-03-31 14:42:04,1,35433,470,-56,28.945499,-13.6052,CRUISE,780.563,14:30,850,0,779,0,1187,1810,2.431674,2.817377,3.257252,8.615501,N/A,N/A

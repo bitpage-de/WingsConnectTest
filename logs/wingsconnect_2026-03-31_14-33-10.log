@@ -1,0 +1,23 @@
+============================================================
+[2026-03-31 14:33:10] === EINZELMESSUNG ===
+============================================================
+[2026-03-31 14:33:10] \033[1m[PING / PAKETVERLUST]\033[0m
+[2026-03-31 14:33:20]   8.8.8.8 → \033[0;31mnicht erreichbar\033[0m
+[2026-03-31 14:33:31]   1.1.1.1 → \033[0;31mnicht erreichbar\033[0m
+[2026-03-31 14:33:42]   208.67.222.222 → \033[0;31mnicht erreichbar\033[0m
+[2026-03-31 14:33:42] \033[1m[DNS-AUFLÖSUNG]\033[0m
+[2026-03-31 14:33:45]   google.com → \033[0;32m2494ms\033[0m
+[2026-03-31 14:33:47]   cloudflare.com → \033[0;32m2008ms\033[0m
+[2026-03-31 14:33:49]   amazon.com → \033[0;32m2481ms\033[0m
+[2026-03-31 14:33:49] \033[1m[HTTP-LATENZ]\033[0m
+[2026-03-31 14:33:57]   https://www.google.com
+[2026-03-31 14:33:57]     DNS:0.021630s  Connect:0.923740s  TTFB:5.943419s  Total:6.286710s  HTTP:200
+[2026-03-31 14:34:07]   https://www.cloudflare.com
+[2026-03-31 14:34:08]     DNS:0.653866s  Connect:1.439202s  TTFB:3.329042s  Total:8.553380s  HTTP:200
+[2026-03-31 14:34:23]   https://httpbin.org/get → \033[0;31mFehler / Timeout\033[0m
+[2026-03-31 14:34:23] \033[1m[IPERF3 – BANDBREITE]\033[0m
+[2026-03-31 14:34:23]   \033[1;33miperf3 nicht installiert.\033[0m
+[2026-03-31 14:34:23]   Installation: https://iperf.fr/iperf-download.php
+[2026-03-31 14:34:23]   Oder via: choco install iperf3 / brew install iperf3
+============================================================
+[2026-03-31 14:34:23] Log gespeichert: ./logs/wingsconnect_2026-03-31_14-33-10.log
