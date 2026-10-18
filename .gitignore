@@ -1,0 +1,6 @@
+logs/*.log
+logs/*.csv
+logs/*.jsonl
+!logs/BERICHT_*.md
+.claude/settings.local.json
+prep_backup_*.json
