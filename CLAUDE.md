@@ -5,7 +5,7 @@ Misst die In-Flight-WiFi-Qualität auf Eurowings-Flügen (Wings Connect by Anuvu
 ## Aktueller Stand (2026-10-18) — nach dem Flug aktualisieren
 
 - **Flug 2: EW9444 DUS → BCN, Abflug 16:20.** Laptop ist vorbereitet (`prepare_laptop.ps1` um 10:10: Schema „WingsConnect“, Updates pausiert bis 25.10., Dropbox aus). Backup in `prep_backup_state.json`.
-- An Bord: `bash test_connection.sh --flight EW9444` — einmal starten, laufen lassen; bei Abbruch denselben Befehl erneut (hängt an).
+- An Bord: `bash test_connection.sh --flight EW9444` — einmal starten, laufen lassen; bei Abbruch denselben Befehl erneut (hängt an). Zusätzlich einmal `probe_network.py --flight EW9444` (vor und nach dem Portal-Login, ~2 Min.).
 - Nach der Landung: `.\prepare_laptop.ps1 -Restore`, dann Report (`--flight EW9444 --open`), commit + push.
 - Flug 1 (EWG39C DUS → ACE, 31.03.) ist ausgewertet: `logs/BERICHT_2026-03-31_*.md` (mit Erratum) und `logs/REPORT_2026-03-31_*.html`.
 
@@ -13,6 +13,7 @@ Misst die In-Flight-WiFi-Qualität auf Eurowings-Flügen (Wings Connect by Anuvu
 
 - `test_connection.sh` — Messskript (Ping, DNS, HTTP, curl-Bandbreite, optional iperf3, Flugdaten)
 - `make_report.py` — HTML-Bericht und `--summary` (Textstatus), Python 3 ohne Abhängigkeiten
+- `probe_network.py` — einmalige Netzwerk-Probe: erlaubte Ports/Protokolle, DNS/Proxy/TLS, Client-Isolation, Sichtbarkeit des eigenen Geräts → `logs/netprobe_*.txt/.json`
 - `prepare_laptop.ps1` — Laptop vorbereiten / `-Restore`
 - `README.md` — Befehle, Optionen, CSV-Spalten, Checkliste · `docs/wingsconnect-api.md` — Bord-API
 - `logs/` — `.log` (lesbar), `.csv` (eine Zeile pro Runde), `.jsonl` (rohe API-Antworten), `BERICHT_*.md`, `REPORT_*.html`; komplett im Repo
@@ -38,6 +39,8 @@ bash test_connection.sh --once                                 # Funktionstest (
 - **Paketverlust in Flug-1-CSV** ist die *Anzahl* verlorener Pakete von 10 („4“ = 40 %). `make_report.py` rechnet das um; seit Flug 2 steht der Prozentwert drin.
 - `internetAvailable: false` trotz funktionierendem Link = Portal-/Bezahlstatus.
 - Flug-1-Daten liegen in 10 Teildateien (Skript-Neustarts); `make_report.py` führt sie zusammen.
+- `probe_network.py` nicht wiederholt laufen lassen: portquiz.net/letmeoutofyour.net sperren die IP nach wenigen Läufen. Zum Testen einzelner Abschnitte das Modul importieren und `EGRESS_PORTS` kürzen.
+- Netprobe-Logs enthalten Firewall-Regeln und lauschende Ports des Laptops. Das Repo ist privat (geprüft 18.10.); vor einer Veröffentlichung die `netprobe_*` herausnehmen.
 
 ## Erfahrungswerte Flug 1 (Reiseflughöhe, Satellit)
 

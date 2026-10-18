@@ -117,6 +117,31 @@ cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9444.csv | column -t
 
 Hinweis zu Flug 1: Das alte Skript speicherte den Paketverlust als *Anzahl* verlorener Pakete (von 10), nicht in Prozent. Der Bericht rechnet das um (×10); die Werte im Markdown-Bericht vom 31.03. („0–6 %“) sind entsprechend 0–60 %.
 
+## Netzwerk-Probe: Was lässt das Bord-WLAN zu?
+
+`probe_network.py` prüft einmalig (ca. 2 Minuten), was im Netz erlaubt ist und wie sichtbar das eigene Gerät ist. Es testet nur eigene Verbindungen, das eigene Subnetz und das eigene Gerät, keine Portscans fremder Geräte.
+
+```bash
+/c/Python313/python probe_network.py --flight EW9444        # voll: mit Ping-Sweep im eigenen /24, 15 s Mithören
+/c/Python313/python probe_network.py --flight EW9444 --quick
+```
+
+| Block | Was geprüft wird |
+|-------|------------------|
+| Umgebung | IP, Subnetzgröße, Gateway, DNS, Netzwerkprofil, öffentliche IP + Provider, IPv6 |
+| Portal/Proxy/TLS | Connectivity-Checks, HTTP-Umleitung, Proxy-Header, Zertifikatsaussteller (TLS-Interception?) |
+| DNS | System-Resolver, direkt 8.8.8.8/1.1.1.1 per UDP, TCP und DoT, DoH, NXDOMAIN-Hijack, Resolver-Identität |
+| TCP-Egress | 29 Ports gegen portquiz.net (lauscht auf allen Ports; Antwort wird verifiziert) + echte Banner: FTP, SSH, Telnet, SMTP, IMAP, POP3; FTP-Login mit Listing |
+| UDP | NTP (mit Uhrabweichung), STUN (öffentliche IP, NAT-Typ) |
+| Isolation | Gateway-Ping, Ping-Sweep, ARP-Nachbarn, 15 s passives Mithören von mDNS/SSDP/LLMNR/NetBIOS, je eine mDNS-/SSDP-Anfrage |
+| Eigenes Gerät | Firewall je Profil, Netzwerkerkennung, Datei-/Druckerfreigabe, RDP, NetBIOS/LLMNR, lauschende Ports mit Prozess |
+
+Ausgabe: `logs/netprobe_<Datum>_<Uhrzeit>_<Flug>.txt` (lesbar) und `.json`. Sinnvoll zweimal: vor dem Portal-Login und danach.
+
+**Sparsam einsetzen:** Die Egress-Testserver (portquiz.net, Ausweichserver letmeoutofyour.net) sperren die Quell-IP bei zu vielen Verbindungen. Am 18.10. war das nach 4 Läufen in 8 Minuten der Fall. Pro Flug ein bis zwei Läufe; ist kein Testserver erreichbar, meldet das Skript „Port-Matrix nicht prüfbar“, die echten Dienste in Abschnitt 4b laufen trotzdem.
+
+**Gegenprobe für die Sichtbarkeit:** Ob ein Port wirklich von außen erreichbar ist, lässt sich vom Laptop selbst nicht testen (Verbindungen zur eigenen IP laufen über Loopback, die Firewall filtert sie nicht). Dafür von einem zweiten Gerät im selben WLAN mit einer Netzwerkscanner-App die IP des Laptops prüfen.
+
 ## Abhängigkeiten
 
 | Werkzeug | Zweck | Auf diesem Laptop |
