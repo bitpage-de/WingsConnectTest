@@ -56,9 +56,11 @@ bleiben davon unberührt.
 **Zitiervorschlag, freiwillig und keine Bedingung**
 
 > Wings Connect Test, Messung der In-Flight-WiFi-Qualität auf Eurowings-Flügen.
-> bitpage, 2026. https://github.com/bitpage-de/WingsConnectTest - CC0 1.0
+> bitpage, 2026. Blog: https://bitpage.de
+> Repository: https://github.com/bitpage-de/WingsConnectTest · CC0 1.0
 
-Eine Nennung ist nicht erforderlich, aber willkommen.
+Eine Nennung ist nicht erforderlich. Wenn du die Daten oder die Berichte
+verwendest, freuen wir uns über einen Hinweis auf den Blog bitpage.de.
 
 ---
 

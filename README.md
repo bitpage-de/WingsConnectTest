@@ -180,4 +180,7 @@ Ausgabe: `logs/netprobe_<Datum>_<Uhrzeit>_<Flug>.txt` (lesbar) und `.json`. Sinn
 - **Aussagekraft:** Momentaufnahmen einzelner Flüge von einem Laptop an einem Sitzplatz, keine repräsentative Dienstgütemessung.
 - **Erhebung:** nur vom Bordportal selbst ausgelieferte Antworten und eigene Netzwerkmessungen. Keine Zugangsdaten, Token oder personenbezogenen Daten im Repo.
 
+CC0 verlangt keine Namensnennung. Wenn du die Daten oder Berichte verwendest,
+freuen wir uns über einen Hinweis auf den Blog [bitpage.de](https://bitpage.de).
+
 Volltext, Zitiervorschlag und ausführliche Hinweise: [LICENSE.md](LICENSE.md)
