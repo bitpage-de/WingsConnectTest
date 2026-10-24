@@ -4,6 +4,10 @@ Automatisierte Messung der In-Flight-WiFi-Qualität auf Eurowings-Flügen
 („Wings Connect“ von Anuvu). Jede Messrunde verknüpft Netzwerkwerte mit den
 Live-Flugdaten der bordinternen API.
 
+> **Unabhängiges Projekt.** Entstanden aus eigenem Interesse, ohne Auftrag,
+> Beteiligung oder Billigung von Eurowings, Anuvu oder Lufthansa Systems.
+> Genannte Marken gehören ihren Inhabern. Siehe [LICENSE.md](LICENSE.md).
+
 | Flug | Datum | Route | Bericht |
 |------|-------|-------|---------|
 | EWG39C / EW39C | 2026-03-31 | DUS → ACE | [logs/BERICHT_2026-03-31_EWG39C_DUS-ACE.md](logs/BERICHT_2026-03-31_EWG39C_DUS-ACE.md) |
@@ -163,3 +167,17 @@ Ausgabe: `logs/netprobe_<Datum>_<Uhrzeit>_<Flug>.txt` (lesbar) und `.json`. Sinn
 - Download 0,05–1,3 Mbit/s, Upload 0,07–0,7 Mbit/s (curl, ein TCP-Stream)
 - Kompletter Ausfall beim Beam-/Satellitenwechsel (Flug 1: über Gibraltar), danach ~25 Min. erhöhte Latenz
 - `internetAvailable: false` in der API trotz funktionierendem Link → Flag beschreibt den Portal-/Bezahlstatus
+
+## Lizenz und Hinweise
+
+| Inhalt | Lizenz |
+|--------|--------|
+| Skripte (`*.sh`, `*.py`, `*.ps1`) | MIT |
+| Messdaten, Berichte, Dokumentation (`logs/`, `docs/`, `*.md`) | CC BY 4.0 |
+
+- **Unabhängig:** kein Auftrag, keine Beteiligung, keine Billigung durch Eurowings, Anuvu oder Lufthansa Systems.
+- **Marken:** Eurowings, Wings Connect, Anuvu und BoardConnect sind Marken ihrer Inhaber, hier rein benennend verwendet.
+- **Aussagekraft:** Momentaufnahmen einzelner Flüge von einem Laptop an einem Sitzplatz, keine repräsentative Dienstgütemessung.
+- **Erhebung:** nur vom Bordportal selbst ausgelieferte Antworten und eigene Netzwerkmessungen. Keine Zugangsdaten, Token oder personenbezogenen Daten im Repo.
+
+Volltext, Zitiervorschlag und ausführliche Hinweise: [LICENSE.md](LICENSE.md)
