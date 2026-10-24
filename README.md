@@ -102,7 +102,7 @@ git add -A && git commit -m "Messdaten EW9441" && git push
 /c/Python313/python make_report.py --flight EW9441 --open
 
 # Schnellblick: Höhe, Phase, Ping, Verlust, Download pro Runde
-cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9441.csv | column -t -s','
+cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-24_EW9441.csv | column -t -s','
 ```
 
 ## HTML-Bericht
