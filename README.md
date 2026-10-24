@@ -8,6 +8,8 @@ Live-Flugdaten der bordinternen API.
 > Beteiligung oder Billigung von Eurowings, Anuvu oder Lufthansa Systems.
 > Genannte Marken gehören ihren Inhabern. Siehe [LICENSE.md](LICENSE.md).
 
+**Auswertung und Einordnung der Messungen:** [Eurowings-WLAN im Test: Was Wings Connect wirklich leistet](https://bitpage.de/eurowings-wlan-wings-connect-test/) auf bitpage.de
+
 | Flug | Datum | Route | Bericht |
 |------|-------|-------|---------|
 | EWG39C / EW39C | 2026-03-31 | DUS → ACE | [logs/BERICHT_2026-03-31_EWG39C_DUS-ACE.md](logs/BERICHT_2026-03-31_EWG39C_DUS-ACE.md) |

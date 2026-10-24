@@ -4,6 +4,7 @@ Misst die In-Flight-WiFi-Qualität auf Eurowings-Flügen (Wings Connect by Anuvu
 
 ## Aktueller Stand (2026-10-24)
 
+- **Repo ist seit 25.10.2026 öffentlich**, Blogbeitrag dazu: https://bitpage.de/eurowings-wlan-wings-connect-test/. Lizenzen in `LICENSE.md` (MIT für Code, CC0 1.0 für Daten/Berichte); die Abgrenzungshinweise zu Unabhängigkeit und Marken in `LICENSE.md`/`README.md` nicht entfernen. Netprobe-Ausgaben sind aus der Historie getilgt und dürfen nie committet werden.
 - **Beide Messflüge sind ausgewertet, kein weiterer Flug geplant.** Laptop am 24.10. per `-Restore` zurückgesetzt.
 - Flug 2: **EW9441 BCN → DUS, 24.10.2026**, A321ceo D-AIDT (Callsign EWG3LK): `logs/REPORT_2026-10-24_EWG3LK.html`, 23 Runden bis Taxi-In. Auf dem Hinflug EW9444 (18.10., DUS → BCN) war **kein Wings Connect verfügbar** — keine Messung.
 - Flug 1 (EWG39C DUS → ACE, 31.03.) ist ausgewertet: `logs/BERICHT_2026-03-31_*.md` (mit Erratum) und `logs/REPORT_2026-03-31_*.html`.
