@@ -1,0 +1,873 @@
+[2026-10-24 11:02:25] Flug: EW9441  |  Start: 2026-10-24 11:02:25 lokal / 09:02:25 UTC
+[2026-10-24 11:02:25] Log:   ./logs/wingsconnect_2026-10-24_EW9441.log
+[2026-10-24 11:02:25] CSV:   ./logs/wingsconnect_2026-10-24_EW9441.csv
+[2026-10-24 11:02:25] JSONL: ./logs/wingsconnect_2026-10-24_EW9441.jsonl (rohe API-Antworten)
+[2026-10-24 11:02:25] Intervall: 120s | Ping-Pakete: 10 | iperf3: an (5s je Richtung)
+============================================================
+[2026-10-24 11:02:25] === TRACEROUTE (einmalig zu Beginn) ===
+[2026-10-24 11:02:25] [TRACEROUTE → 8.8.8.8]
+test_connection.sh: line 397: traceroute: command not found
+============================================================
+[2026-10-24 11:02:25] === MESSRUNDE #1 (EW9441) ===
+============================================================
+[2026-10-24 11:02:25] [FLUGDATEN]
+[2026-10-24 11:02:29]   Flugdaten nicht verfügbar (API nur im Flugzeug-WLAN erreichbar)
+[2026-10-24 11:02:29] [PING / PAKETVERLUST]
+[2026-10-24 11:03:46] Messung beendet. Letzte Runde: #1
+[2026-10-24 11:03:46] Log: ./logs/wingsconnect_2026-10-24_EW9441.log
+[2026-10-24 11:03:46] CSV: ./logs/wingsconnect_2026-10-24_EW9441.csv
+[2026-10-24 11:04:08] Flug: EW9441  |  Start: 2026-10-24 11:04:08 lokal / 09:04:08 UTC
+[2026-10-24 11:04:08] Log:   ./logs/wingsconnect_2026-10-24_EW9441.log
+[2026-10-24 11:04:08] CSV:   ./logs/wingsconnect_2026-10-24_EW9441.csv
+[2026-10-24 11:04:08] JSONL: ./logs/wingsconnect_2026-10-24_EW9441.jsonl (rohe API-Antworten)
+[2026-10-24 11:04:08] Intervall: 120s | Ping-Pakete: 10 | iperf3: an (5s je Richtung)
+[2026-10-24 11:04:08] Vorhandene Dateien gefunden – Messung wird ab Runde #1 fortgesetzt
+============================================================
+[2026-10-24 11:04:08] === TRACEROUTE (einmalig zu Beginn) ===
+[2026-10-24 11:04:08] [TRACEROUTE → 8.8.8.8]
+test_connection.sh: line 397: traceroute: command not found
+============================================================
+[2026-10-24 11:04:08] === MESSRUNDE #1 (EW9441) ===
+============================================================
+[2026-10-24 11:04:08] [FLUGDATEN]
+[2026-10-24 11:04:11]   Flugdaten nicht verfügbar (API nur im Flugzeug-WLAN erreichbar)
+[2026-10-24 11:04:11] [PING / PAKETVERLUST]
+[2026-10-24 11:04:57] Messung beendet. Letzte Runde: #1
+[2026-10-24 11:04:57] Log: ./logs/wingsconnect_2026-10-24_EW9441.log
+[2026-10-24 11:04:57] CSV: ./logs/wingsconnect_2026-10-24_EW9441.csv
+[2026-10-24 11:05:07] Flug: EW9441  |  Start: 2026-10-24 11:05:07 lokal / 09:05:07 UTC
+[2026-10-24 11:05:07] Log:   ./logs/wingsconnect_2026-10-24_EW9441.log
+[2026-10-24 11:05:07] CSV:   ./logs/wingsconnect_2026-10-24_EW9441.csv
+[2026-10-24 11:05:08] JSONL: ./logs/wingsconnect_2026-10-24_EW9441.jsonl (rohe API-Antworten)
+[2026-10-24 11:05:08] Intervall: 120s | Ping-Pakete: 10 | iperf3: an (5s je Richtung)
+[2026-10-24 11:05:08] Vorhandene Dateien gefunden – Messung wird ab Runde #1 fortgesetzt
+============================================================
+[2026-10-24 11:05:08] === TRACEROUTE (einmalig zu Beginn) ===
+[2026-10-24 11:05:08] [TRACEROUTE → 8.8.8.8]
+
+Routenverfolgung zu 8.8.8.8 über maximal 20 Hops
+
+  1     *        *        *     Zeitüberschreitung der Anforderung.
+  2     3 ms     2 ms     1 ms  10.23.1.75 
+  3     3 ms     3 ms     3 ms  172.17.1.1 
+  4    12 ms     3 ms     3 ms  10.255.52.77 
+  5     *        *        *     Zeitüberschreitung der Anforderung.
+  6     *        *        *     Zeitüberschreitung der Anforderung.
+  7     *        *        *     Zeitüberschreitung der Anforderung.
+  8     *        *        *     Zeitüberschreitung der Anforderung.
+  9     *        *        *     Zeitüberschreitung der Anforderung.
+ 10   650 ms  1006 ms   680 ms  172.30.22.85 
+ 11     *        *        *     Zeitüberschreitung der Anforderung.
+ 12   624 ms   601 ms   611 ms  10.240.7.21 
+ 13   799 ms   878 ms  1028 ms  100.66.0.24 
+ 14   974 ms   626 ms   637 ms  80.157.202.222 
+ 15   640 ms   623 ms   623 ms  80.157.202.221 
+ 16   679 ms   619 ms   606 ms  217.5.115.110 
+ 17   664 ms   640 ms   612 ms  62.157.250.46 
+ 18   800 ms   664 ms   599 ms  192.178.121.181 
+ 19   681 ms   712 ms   620 ms  172.253.66.137 
+ 20   609 ms   629 ms   693 ms  8.8.8.8 
+
+Ablaufverfolgung beendet.
+============================================================
+[2026-10-24 11:06:38] === MESSRUNDE #1 (EW9441) ===
+============================================================
+[2026-10-24 11:06:39] [FLUGDATEN]
+[2026-10-24 11:06:40]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:06:40]   Flugphase:   CRUISE  |  Flugzeit: 00:48
+[2026-10-24 11:06:40]   Höhe:        36082 ft
+[2026-10-24 11:06:40]   Geschw.:     366 kts  |  Kurs: 8.9°
+[2026-10-24 11:06:40]   Temperatur:  -56 °C
+[2026-10-24 11:06:41]   Position:    44.41120, 6.33636
+[2026-10-24 11:06:41]   Ziel-Dist.:  475.8 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:06:41]   Internet:    verfügbar
+[2026-10-24 11:06:41] [PING / PAKETVERLUST]
+[2026-10-24 11:06:52]   8.8.8.8 → Avg: 789ms  Verlust: 0%
+[2026-10-24 11:07:03]   1.1.1.1 → Avg: 702ms  Verlust: 0%
+[2026-10-24 11:07:03] [DNS-AUFLÖSUNG]
+[2026-10-24 11:07:06]   google.com → 2645ms
+[2026-10-24 11:07:08]   cloudflare.com → 1473ms
+[2026-10-24 11:07:08] [HTTP-LATENZ]
+[2026-10-24 11:07:19]   https://www.google.com
+[2026-10-24 11:07:19]     DNS:0.015680s  Connect:0.711701s  TTFB:2.632582s  Total:3.589713s  HTTP:200
+[2026-10-24 11:07:44]   https://www.cloudflare.com
+[2026-10-24 11:07:44]     DNS:0.013251s  Connect:0.922765s  TTFB:3.893183s  Total:12.373602s  HTTP:200
+[2026-10-24 11:07:44] [BANDBREITE (curl)]
+[2026-10-24 11:07:45]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:08:16]   Download: 0.81 Mbit/s (3038410 bytes in 30.011839s)
+[2026-10-24 11:08:16]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:08:26]   Upload:   0.44 Mbit/s (524288 bytes in 9.497898s)
+[2026-10-24 11:08:26] [BANDBREITE (iperf3)]
+[2026-10-24 11:08:27]   Server: bouygues.iperf.fr ...
+[2026-10-24 11:08:34]     nicht erreichbar oder belegt
+[2026-10-24 11:08:34]   Server: paris.testdebit.info ...
+[2026-10-24 11:08:37]     nicht erreichbar oder belegt
+[2026-10-24 11:08:37]   Server: ping.online.net ...
+[2026-10-24 11:08:40]     nicht erreichbar oder belegt
+[2026-10-24 11:08:40]   Server: iperf.he.net ...
+[2026-10-24 11:08:48]     nicht erreichbar oder belegt
+[2026-10-24 11:08:48]   kein iperf3-Server erreichbar (Port 5201 vermutlich gesperrt)
+============================================================
+[2026-10-24 11:08:50] Runde #1 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:10:50] === MESSRUNDE #2 (EW9441) ===
+============================================================
+[2026-10-24 11:10:51] [FLUGDATEN]
+[2026-10-24 11:10:51]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:10:52]   Flugphase:   CRUISE  |  Flugzeit: 00:52
+[2026-10-24 11:10:52]   Höhe:        36046 ft
+[2026-10-24 11:10:52]   Geschw.:     369 kts  |  Kurs: 10.3°
+[2026-10-24 11:10:52]   Temperatur:  -54 °C
+[2026-10-24 11:10:52]   Position:    44.81289, 6.51146
+[2026-10-24 11:10:53]   Ziel-Dist.:  447.8 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:10:53]   Internet:    verfügbar
+[2026-10-24 11:10:53] [PING / PAKETVERLUST]
+[2026-10-24 11:11:16]   8.8.8.8 → Avg: 806ms  Verlust: 30%
+[2026-10-24 11:11:27]   1.1.1.1 → Avg: 897ms  Verlust: 0%
+[2026-10-24 11:11:27] [DNS-AUFLÖSUNG]
+[2026-10-24 11:11:29]   google.com → 1882ms
+[2026-10-24 11:11:30]   cloudflare.com → 376ms
+[2026-10-24 11:11:30] [HTTP-LATENZ]
+[2026-10-24 11:11:43]   https://www.google.com
+[2026-10-24 11:11:43]     DNS:0.015576s  Connect:0.908937s  TTFB:2.756938s  Total:3.530161s  HTTP:200
+[2026-10-24 11:12:09]   https://www.cloudflare.com
+[2026-10-24 11:12:09]     DNS:0.016724s  Connect:0.825309s  TTFB:2.751821s  Total:12.049452s  HTTP:200
+[2026-10-24 11:12:09] [BANDBREITE (curl)]
+[2026-10-24 11:12:09]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:12:40]   Download: 0.55 Mbit/s (2051749 bytes in 30.011478s)
+[2026-10-24 11:12:40]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:12:50]   Upload:   0.46 Mbit/s (524288 bytes in 9.057808s)
+[2026-10-24 11:12:51] [BANDBREITE (iperf3)]
+[2026-10-24 11:12:51]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 5)
+============================================================
+[2026-10-24 11:12:52] Runde #2 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:14:52] === MESSRUNDE #3 (EW9441) ===
+============================================================
+[2026-10-24 11:14:53] [FLUGDATEN]
+[2026-10-24 11:14:54]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:14:54]   Flugphase:   CRUISE  |  Flugzeit: 00:56
+[2026-10-24 11:14:54]   Höhe:        36024 ft
+[2026-10-24 11:14:54]   Geschw.:     372 kts  |  Kurs: 11.9°
+[2026-10-24 11:14:54]   Temperatur:  -51 °C
+[2026-10-24 11:14:55]   Position:    45.20754, 6.69325
+[2026-10-24 11:14:55]   Ziel-Dist.:  420.4 nm  |  ETA: 10:25 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:14:55]   Internet:    verfügbar
+[2026-10-24 11:14:55] [PING / PAKETVERLUST]
+[2026-10-24 11:15:06]   8.8.8.8 → Avg: 839ms  Verlust: 0%
+[2026-10-24 11:15:17]   1.1.1.1 → Avg: 830ms  Verlust: 0%
+[2026-10-24 11:15:18] [DNS-AUFLÖSUNG]
+[2026-10-24 11:15:19]   google.com → 1584ms
+[2026-10-24 11:15:21]   cloudflare.com → 1516ms
+[2026-10-24 11:15:21] [HTTP-LATENZ]
+[2026-10-24 11:15:29]   https://www.google.com
+[2026-10-24 11:15:29]     DNS:0.016204s  Connect:0.841954s  TTFB:2.481894s  Total:2.951068s  HTTP:200
+[2026-10-24 11:15:53]   https://www.cloudflare.com
+[2026-10-24 11:15:53]     DNS:0.017302s  Connect:0.772838s  TTFB:2.453445s  Total:10.614078s  HTTP:200
+[2026-10-24 11:15:53] [BANDBREITE (curl)]
+[2026-10-24 11:15:53]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:16:24]   Download: 1.13 Mbit/s (4231991 bytes in 30.003844s)
+[2026-10-24 11:16:24]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:16:33]   Upload:   0.51 Mbit/s (524288 bytes in 8.165237s)
+[2026-10-24 11:16:33] [BANDBREITE (iperf3)]
+[2026-10-24 11:16:34]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 5)
+============================================================
+[2026-10-24 11:16:35] Runde #3 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:18:36] === MESSRUNDE #4 (EW9441) ===
+============================================================
+[2026-10-24 11:18:36] [FLUGDATEN]
+[2026-10-24 11:18:37]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:18:37]   Flugphase:   CRUISE  |  Flugzeit: 00:60
+[2026-10-24 11:18:37]   Höhe:        36105 ft
+[2026-10-24 11:18:37]   Geschw.:     381 kts  |  Kurs: 12.1°
+[2026-10-24 11:18:37]   Temperatur:  -51 °C
+[2026-10-24 11:18:38]   Position:    45.57592, 6.86594
+[2026-10-24 11:18:38]   Ziel-Dist.:  394.9 nm  |  ETA: 10:25 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:18:38]   Internet:    verfügbar
+[2026-10-24 11:18:38] [PING / PAKETVERLUST]
+[2026-10-24 11:18:49]   8.8.8.8 → Avg: 756ms  Verlust: 0%
+[2026-10-24 11:19:00]   1.1.1.1 → Avg: 878ms  Verlust: 0%
+[2026-10-24 11:19:01] [DNS-AUFLÖSUNG]
+[2026-10-24 11:19:02]   google.com → 970ms
+[2026-10-24 11:19:02]   cloudflare.com → 267ms
+[2026-10-24 11:19:03] [HTTP-LATENZ]
+[2026-10-24 11:19:14]   https://www.google.com
+[2026-10-24 11:19:14]     DNS:0.016722s  Connect:1.103573s  TTFB:2.796655s  Total:3.292989s  HTTP:200
+[2026-10-24 11:19:36]   https://www.cloudflare.com
+[2026-10-24 11:19:36]     DNS:0.017267s  Connect:0.695399s  TTFB:2.204776s  Total:10.828709s  HTTP:200
+[2026-10-24 11:19:37] [BANDBREITE (curl)]
+[2026-10-24 11:19:37]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:20:08]   Download: 1.11 Mbit/s (4165267 bytes in 30.005628s)
+[2026-10-24 11:20:08]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:20:16]   Upload:   0.61 Mbit/s (524288 bytes in 6.904486s)
+[2026-10-24 11:20:16] [BANDBREITE (iperf3)]
+[2026-10-24 11:20:16]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 5)
+============================================================
+[2026-10-24 11:20:18] Runde #4 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:22:18] === MESSRUNDE #5 (EW9441) ===
+============================================================
+[2026-10-24 11:22:18] [FLUGDATEN]
+[2026-10-24 11:22:19]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:22:20]   Flugphase:   CRUISE  |  Flugzeit: 01:03
+[2026-10-24 11:22:20]   Höhe:        36061 ft
+[2026-10-24 11:22:20]   Geschw.:     361 kts  |  Kurs: -18.7°
+[2026-10-24 11:22:20]   Temperatur:  -51 °C
+[2026-10-24 11:22:20]   Position:    45.94637, 6.75402
+[2026-10-24 11:22:21]   Ziel-Dist.:  369.3 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:22:21]   Internet:    verfügbar
+[2026-10-24 11:22:21] [PING / PAKETVERLUST]
+[2026-10-24 11:22:32]   8.8.8.8 → Avg: 845ms  Verlust: 0%
+[2026-10-24 11:22:43]   1.1.1.1 → Avg: 834ms  Verlust: 0%
+[2026-10-24 11:22:43] [DNS-AUFLÖSUNG]
+[2026-10-24 11:22:46]   google.com → 1929ms
+[2026-10-24 11:22:48]   cloudflare.com → 1951ms
+[2026-10-24 11:22:48] [HTTP-LATENZ]
+[2026-10-24 11:22:56]   https://www.google.com
+[2026-10-24 11:22:56]     DNS:0.031701s  Connect:0.759615s  TTFB:2.317140s  Total:2.759379s  HTTP:200
+[2026-10-24 11:23:20]   https://www.cloudflare.com
+[2026-10-24 11:23:20]     DNS:0.031891s  Connect:0.770207s  TTFB:2.352306s  Total:10.453076s  HTTP:200
+[2026-10-24 11:23:20] [BANDBREITE (curl)]
+[2026-10-24 11:23:20]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:23:51]   Download: 1.19 Mbit/s (4463845 bytes in 30.004962s)
+[2026-10-24 11:23:52]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:24:00]   Upload:   0.53 Mbit/s (524288 bytes in 7.923593s)
+[2026-10-24 11:24:00] [BANDBREITE (iperf3)]
+[2026-10-24 11:24:01]   Server: bouygues.iperf.fr ...
+[2026-10-24 11:24:07]     nicht erreichbar oder belegt
+[2026-10-24 11:24:08]   Server: paris.testdebit.info ...
+[2026-10-24 11:24:14]     nicht erreichbar oder belegt
+[2026-10-24 11:24:14]   Server: ping.online.net ...
+[2026-10-24 11:24:15]     nicht erreichbar oder belegt
+[2026-10-24 11:24:16]   Server: iperf.he.net ...
+[2026-10-24 11:24:20]     nicht erreichbar oder belegt
+[2026-10-24 11:24:20]   kein iperf3-Server erreichbar (Port 5201 vermutlich gesperrt)
+============================================================
+[2026-10-24 11:24:22] Runde #5 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:26:22] === MESSRUNDE #6 (EW9441) ===
+============================================================
+[2026-10-24 11:26:22] [FLUGDATEN]
+[2026-10-24 11:26:24]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:26:24]   Flugphase:   CRUISE  |  Flugzeit: 01:07
+[2026-10-24 11:26:24]   Höhe:        36045 ft
+[2026-10-24 11:26:24]   Geschw.:     331 kts  |  Kurs: -20.0°
+[2026-10-24 11:26:24]   Temperatur:  -52 °C
+[2026-10-24 11:26:24]   Position:    46.31441, 6.57085
+[2026-10-24 11:26:25]   Ziel-Dist.:  344.0 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:26:25]   Internet:    verfügbar
+[2026-10-24 11:26:25] [PING / PAKETVERLUST]
+[2026-10-24 11:26:36]   8.8.8.8 → Avg: 684ms  Verlust: 0%
+[2026-10-24 11:26:46]   1.1.1.1 → Avg: 666ms  Verlust: 0%
+[2026-10-24 11:26:47] [DNS-AUFLÖSUNG]
+[2026-10-24 11:26:48]   google.com → 1663ms
+[2026-10-24 11:26:49]   cloudflare.com → 212ms
+[2026-10-24 11:26:49] [HTTP-LATENZ]
+[2026-10-24 11:26:57]   https://www.google.com
+[2026-10-24 11:26:57]     DNS:0.015300s  Connect:0.685650s  TTFB:2.401048s  Total:3.713642s  HTTP:200
+[2026-10-24 11:27:27]   https://www.cloudflare.com
+[2026-10-24 11:27:27]     DNS:0.033833s  Connect:1.929065s  TTFB:3.246123s  Total:14.005801s  HTTP:200
+[2026-10-24 11:27:28] [BANDBREITE (curl)]
+[2026-10-24 11:27:28]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:27:59]   Download: 0.60 Mbit/s (2232000 bytes in 30.002921s)
+[2026-10-24 11:27:59]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:28:09]   Upload:   0.47 Mbit/s (524288 bytes in 8.831216s)
+[2026-10-24 11:28:09] [BANDBREITE (iperf3)]
+[2026-10-24 11:28:09]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 10)
+============================================================
+[2026-10-24 11:28:11] Runde #6 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:30:11] === MESSRUNDE #7 (EW9441) ===
+============================================================
+[2026-10-24 11:30:11] [FLUGDATEN]
+[2026-10-24 11:30:12]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:30:13]   Flugphase:   CRUISE  |  Flugzeit: 01:11
+[2026-10-24 11:30:13]   Höhe:        36108 ft
+[2026-10-24 11:30:13]   Geschw.:     328 kts  |  Kurs: -20.5°
+[2026-10-24 11:30:13]   Temperatur:  -53 °C
+[2026-10-24 11:30:13]   Position:    46.64675, 6.40314
+[2026-10-24 11:30:14]   Ziel-Dist.:  321.3 nm  |  ETA: 10:29 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:30:14]   Internet:    verfügbar
+[2026-10-24 11:30:14] [PING / PAKETVERLUST]
+[2026-10-24 11:30:25]   8.8.8.8 → Avg: 767ms  Verlust: 0%
+[2026-10-24 11:30:36]   1.1.1.1 → Avg: 871ms  Verlust: 0%
+[2026-10-24 11:30:37] [DNS-AUFLÖSUNG]
+[2026-10-24 11:30:40]   google.com → 3302ms
+[2026-10-24 11:30:43]   cloudflare.com → 2865ms
+[2026-10-24 11:30:44] [HTTP-LATENZ]
+[2026-10-24 11:30:53]   https://www.google.com
+[2026-10-24 11:30:54]     DNS:0.015535s  Connect:0.817382s  TTFB:3.220541s  Total:4.221672s  HTTP:200
+[2026-10-24 11:31:24]   https://www.cloudflare.com
+[2026-10-24 11:31:24]     DNS:0.034909s  Connect:0.756892s  TTFB:2.443853s  Total:13.958046s  HTTP:200
+[2026-10-24 11:31:24] [BANDBREITE (curl)]
+[2026-10-24 11:31:24]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:31:55]   Download: 0.77 Mbit/s (2891091 bytes in 30.002498s)
+[2026-10-24 11:31:55]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:32:04]   Upload:   0.52 Mbit/s (524288 bytes in 8.085262s)
+[2026-10-24 11:32:05] [BANDBREITE (iperf3)]
+[2026-10-24 11:32:05]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 10)
+============================================================
+[2026-10-24 11:32:07] Runde #7 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:34:07] === MESSRUNDE #8 (EW9441) ===
+============================================================
+[2026-10-24 11:34:07] [FLUGDATEN]
+[2026-10-24 11:34:08]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:34:08]   Flugphase:   CRUISE  |  Flugzeit: 01:15
+[2026-10-24 11:34:09]   Höhe:        36047 ft
+[2026-10-24 11:34:09]   Geschw.:     327 kts  |  Kurs: -14.8°
+[2026-10-24 11:34:09]   Temperatur:  -55 °C
+[2026-10-24 11:34:09]   Position:    46.98252, 6.23577
+[2026-10-24 11:34:09]   Ziel-Dist.:  298.6 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:34:10]   Internet:    verfügbar
+[2026-10-24 11:34:10] [PING / PAKETVERLUST]
+[2026-10-24 11:34:21]   8.8.8.8 → Avg: 824ms  Verlust: 0%
+[2026-10-24 11:34:32]   1.1.1.1 → Avg: 669ms  Verlust: 0%
+[2026-10-24 11:34:32] [DNS-AUFLÖSUNG]
+[2026-10-24 11:34:33]   google.com → 389ms
+[2026-10-24 11:34:33]   cloudflare.com → 197ms
+[2026-10-24 11:34:33] [HTTP-LATENZ]
+[2026-10-24 11:34:43]   https://www.google.com
+[2026-10-24 11:34:43]     DNS:0.038181s  Connect:0.789633s  TTFB:3.071941s  Total:4.009471s  HTTP:200
+[2026-10-24 11:35:14]   https://www.cloudflare.com
+[2026-10-24 11:35:15]     DNS:0.017604s  Connect:1.529062s  TTFB:2.883910s  Total:15.001084s  HTTP:200
+[2026-10-24 11:35:15] [BANDBREITE (curl)]
+[2026-10-24 11:35:15]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:35:46]   Download: 0.98 Mbit/s (3661157 bytes in 30.007339s)
+[2026-10-24 11:35:46]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:35:55]   Upload:   0.53 Mbit/s (524288 bytes in 7.956845s)
+[2026-10-24 11:35:55] [BANDBREITE (iperf3)]
+[2026-10-24 11:35:56]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 10)
+============================================================
+[2026-10-24 11:35:57] Runde #8 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:37:58] === MESSRUNDE #9 (EW9441) ===
+============================================================
+[2026-10-24 11:37:58] [FLUGDATEN]
+[2026-10-24 11:37:59]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:37:59]   Flugphase:   CRUISE  |  Flugzeit: 01:19
+[2026-10-24 11:38:00]   Höhe:        36061 ft
+[2026-10-24 11:38:00]   Geschw.:     334 kts  |  Kurs: -9.1°
+[2026-10-24 11:38:00]   Temperatur:  -55 °C
+[2026-10-24 11:38:00]   Position:    47.33356, 6.22238
+[2026-10-24 11:38:00]   Ziel-Dist.:  274.5 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:38:01]   Internet:    verfügbar
+[2026-10-24 11:38:01] [PING / PAKETVERLUST]
+[2026-10-24 11:38:11]   8.8.8.8 → Avg: 737ms  Verlust: 0%
+[2026-10-24 11:38:25]   1.1.1.1 → Avg: 918ms  Verlust: 10%
+[2026-10-24 11:38:26] [DNS-AUFLÖSUNG]
+[2026-10-24 11:38:28]   google.com → 1894ms
+[2026-10-24 11:38:30]   cloudflare.com → 2450ms
+[2026-10-24 11:38:31] [HTTP-LATENZ]
+[2026-10-24 11:38:38]   https://www.google.com
+[2026-10-24 11:38:38]     DNS:0.033288s  Connect:0.716476s  TTFB:2.835552s  Total:3.337647s  HTTP:200
+[2026-10-24 11:39:01]   https://www.cloudflare.com
+[2026-10-24 11:39:01]     DNS:0.016710s  Connect:0.688297s  TTFB:2.406362s  Total:10.219418s  HTTP:200
+[2026-10-24 11:39:02] [BANDBREITE (curl)]
+[2026-10-24 11:39:02]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:39:33]   Download: 1.16 Mbit/s (4344046 bytes in 29.999895s)
+[2026-10-24 11:39:33]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:39:44]   Upload:   0.39 Mbit/s (524288 bytes in 10.618779s)
+[2026-10-24 11:39:45] [BANDBREITE (iperf3)]
+[2026-10-24 11:39:45]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 10)
+============================================================
+[2026-10-24 11:39:46] Runde #9 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:41:47] === MESSRUNDE #10 (EW9441) ===
+============================================================
+[2026-10-24 11:41:47] [FLUGDATEN]
+[2026-10-24 11:41:48]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:41:48]   Flugphase:   CRUISE  |  Flugzeit: 01:23
+[2026-10-24 11:41:49]   Höhe:        36080 ft
+[2026-10-24 11:41:49]   Geschw.:     338 kts  |  Kurs: -9.2°
+[2026-10-24 11:41:49]   Temperatur:  -54 °C
+[2026-10-24 11:41:49]   Position:    47.69302, 6.21174
+[2026-10-24 11:41:49]   Ziel-Dist.:  249.8 nm  |  ETA: 10:28 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:41:50]   Internet:    verfügbar
+[2026-10-24 11:41:50] [PING / PAKETVERLUST]
+[2026-10-24 11:42:05]   8.8.8.8 → Avg: 811ms  Verlust: 10%
+[2026-10-24 11:42:23]   1.1.1.1 → Avg: 696ms  Verlust: 20%
+[2026-10-24 11:42:24] [DNS-AUFLÖSUNG]
+[2026-10-24 11:42:26]   google.com → 2107ms
+[2026-10-24 11:42:27]   cloudflare.com → 1116ms
+[2026-10-24 11:42:27] [HTTP-LATENZ]
+[2026-10-24 11:42:35]   https://www.google.com
+[2026-10-24 11:42:35]     DNS:0.015283s  Connect:1.012749s  TTFB:2.544474s  Total:2.994433s  HTTP:200
+[2026-10-24 11:42:57]   https://www.cloudflare.com
+[2026-10-24 11:42:57]     DNS:0.015134s  Connect:0.632027s  TTFB:2.156456s  Total:10.331313s  HTTP:200
+[2026-10-24 11:42:57] [BANDBREITE (curl)]
+[2026-10-24 11:42:58]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:43:28]   Download: 1.20 Mbit/s (4492956 bytes in 29.999526s)
+[2026-10-24 11:43:29]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:43:49]   Upload:   0.22 Mbit/s (524288 bytes in 19.279639s)
+[2026-10-24 11:43:49] [BANDBREITE (iperf3)]
+[2026-10-24 11:43:49]   Server: bouygues.iperf.fr ...
+[2026-10-24 11:43:56]     nicht erreichbar oder belegt
+[2026-10-24 11:43:56]   Server: paris.testdebit.info ...
+[2026-10-24 11:43:58]     nicht erreichbar oder belegt
+[2026-10-24 11:43:58]   Server: ping.online.net ...
+[2026-10-24 11:43:59]     nicht erreichbar oder belegt
+[2026-10-24 11:43:59]   Server: iperf.he.net ...
+[2026-10-24 11:44:15]     nicht erreichbar oder belegt
+[2026-10-24 11:44:15]   kein iperf3-Server erreichbar (Port 5201 vermutlich gesperrt)
+============================================================
+[2026-10-24 11:44:17] Runde #10 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:46:17] === MESSRUNDE #11 (EW9441) ===
+============================================================
+[2026-10-24 11:46:17] [FLUGDATEN]
+[2026-10-24 11:46:18]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:46:19]   Flugphase:   CRUISE  |  Flugzeit: 01:27
+[2026-10-24 11:46:19]   Höhe:        36057 ft
+[2026-10-24 11:46:19]   Geschw.:     334 kts  |  Kurs: -10.0°
+[2026-10-24 11:46:19]   Temperatur:  -54 °C
+[2026-10-24 11:46:19]   Position:    48.11085, 6.19921
+[2026-10-24 11:46:20]   Ziel-Dist.:  221.2 nm  |  ETA: 10:27 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:46:20]   Internet:    verfügbar
+[2026-10-24 11:46:20] [PING / PAKETVERLUST]
+[2026-10-24 11:46:31]   8.8.8.8 → Avg: 776ms  Verlust: 0%
+[2026-10-24 11:46:42]   1.1.1.1 → Avg: 815ms  Verlust: 0%
+[2026-10-24 11:46:42] [DNS-AUFLÖSUNG]
+[2026-10-24 11:46:44]   google.com → 1639ms
+[2026-10-24 11:46:46]   cloudflare.com → 1590ms
+[2026-10-24 11:46:46] [HTTP-LATENZ]
+[2026-10-24 11:46:54]   https://www.google.com
+[2026-10-24 11:46:54]     DNS:0.035485s  Connect:0.663070s  TTFB:3.061631s  Total:3.962068s  HTTP:200
+[2026-10-24 11:47:25]   https://www.cloudflare.com
+[2026-10-24 11:47:25]     DNS:0.035871s  Connect:0.000000s  TTFB:0.000000s  Total:15.006743s  HTTP:000
+[2026-10-24 11:47:25] [BANDBREITE (curl)]
+[2026-10-24 11:47:26]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:47:57]   Download: 1.19 Mbit/s (4456367 bytes in 30.000545s)
+[2026-10-24 11:47:57]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:48:06]   Upload:   0.48 Mbit/s (524288 bytes in 8.755550s)
+[2026-10-24 11:48:06] [BANDBREITE (iperf3)]
+[2026-10-24 11:48:07]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 15)
+============================================================
+[2026-10-24 11:48:08] Runde #11 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:50:08] === MESSRUNDE #12 (EW9441) ===
+============================================================
+[2026-10-24 11:50:09] [FLUGDATEN]
+[2026-10-24 11:50:10]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:50:10]   Flugphase:   CRUISE  |  Flugzeit: 01:31
+[2026-10-24 11:50:10]   Höhe:        34060 ft
+[2026-10-24 11:50:10]   Geschw.:     324 kts  |  Kurs: -8.2°
+[2026-10-24 11:50:10]   Temperatur:  -54 °C
+[2026-10-24 11:50:10]   Position:    48.45692, 6.18839
+[2026-10-24 11:50:11]   Ziel-Dist.:  197.5 nm  |  ETA: 10:29 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:50:11]   Internet:    verfügbar
+[2026-10-24 11:50:11] [PING / PAKETVERLUST]
+[2026-10-24 11:50:23]   8.8.8.8 → Avg: 976ms  Verlust: 0%
+[2026-10-24 11:50:38]   1.1.1.1 → Avg: 746ms  Verlust: 10%
+[2026-10-24 11:50:38] [DNS-AUFLÖSUNG]
+[2026-10-24 11:50:40]   google.com → 1521ms
+[2026-10-24 11:50:41]   cloudflare.com → 1169ms
+[2026-10-24 11:50:42] [HTTP-LATENZ]
+[2026-10-24 11:50:54]   https://www.google.com
+[2026-10-24 11:50:54]     DNS:0.017559s  Connect:4.939981s  TTFB:6.620339s  Total:7.402460s  HTTP:200
+[2026-10-24 11:51:19]   https://www.cloudflare.com
+[2026-10-24 11:51:19]     DNS:0.016098s  Connect:0.811393s  TTFB:2.261702s  Total:10.283034s  HTTP:200
+[2026-10-24 11:51:19] [BANDBREITE (curl)]
+[2026-10-24 11:51:19]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:51:50]   Download: 1.02 Mbit/s (3838199 bytes in 30.002057s)
+[2026-10-24 11:51:50]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:52:00]   Upload:   0.49 Mbit/s (524288 bytes in 8.638894s)
+[2026-10-24 11:52:00] [BANDBREITE (iperf3)]
+[2026-10-24 11:52:00]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 15)
+============================================================
+[2026-10-24 11:52:02] Runde #12 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:54:02] === MESSRUNDE #13 (EW9441) ===
+============================================================
+[2026-10-24 11:54:02] [FLUGDATEN]
+[2026-10-24 11:54:03]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:54:03]   Flugphase:   CRUISE  |  Flugzeit: 01:35
+[2026-10-24 11:54:04]   Höhe:        33064 ft
+[2026-10-24 11:54:04]   Geschw.:     324 kts  |  Kurs: -7.4°
+[2026-10-24 11:54:04]   Temperatur:  -52 °C
+[2026-10-24 11:54:04]   Position:    48.80196, 6.17706
+[2026-10-24 11:54:04]   Ziel-Dist.:  173.9 nm  |  ETA: 10:29 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:54:05]   Internet:    verfügbar
+[2026-10-24 11:54:05] [PING / PAKETVERLUST]
+[2026-10-24 11:54:16]   8.8.8.8 → Avg: 904ms  Verlust: 0%
+[2026-10-24 11:54:27]   1.1.1.1 → Avg: 922ms  Verlust: 0%
+[2026-10-24 11:54:27] [DNS-AUFLÖSUNG]
+[2026-10-24 11:54:28]   google.com → 781ms
+[2026-10-24 11:54:32]   cloudflare.com → 3073ms
+[2026-10-24 11:54:32] [HTTP-LATENZ]
+[2026-10-24 11:54:39]   https://www.google.com
+[2026-10-24 11:54:39]     DNS:0.039300s  Connect:0.702454s  TTFB:2.445841s  Total:2.901786s  HTTP:200
+[2026-10-24 11:55:01]   https://www.cloudflare.com
+[2026-10-24 11:55:02]     DNS:0.018050s  Connect:0.639709s  TTFB:2.052963s  Total:10.239110s  HTTP:200
+[2026-10-24 11:55:02] [BANDBREITE (curl)]
+[2026-10-24 11:55:02]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:55:33]   Download: 1.24 Mbit/s (4657390 bytes in 30.002558s)
+[2026-10-24 11:55:33]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:55:44]   Upload:   0.42 Mbit/s (524288 bytes in 9.896657s)
+[2026-10-24 11:55:44] [BANDBREITE (iperf3)]
+[2026-10-24 11:55:44]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 15)
+============================================================
+[2026-10-24 11:55:46] Runde #13 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 11:57:46] === MESSRUNDE #14 (EW9441) ===
+============================================================
+[2026-10-24 11:57:46] [FLUGDATEN]
+[2026-10-24 11:57:47]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 11:57:47]   Flugphase:   CRUISE  |  Flugzeit: 01:39
+[2026-10-24 11:57:47]   Höhe:        32076 ft
+[2026-10-24 11:57:48]   Geschw.:     326 kts  |  Kurs: -2.8°
+[2026-10-24 11:57:48]   Temperatur:  -49 °C
+[2026-10-24 11:57:48]   Position:    49.13858, 6.20504
+[2026-10-24 11:57:48]   Ziel-Dist.:  150.7 nm  |  ETA: 10:28 (API-Zeit, vermutlich UTC)
+[2026-10-24 11:57:48]   Internet:    verfügbar
+[2026-10-24 11:57:48] [PING / PAKETVERLUST]
+[2026-10-24 11:58:00]   8.8.8.8 → Avg: 825ms  Verlust: 0%
+[2026-10-24 11:58:10]   1.1.1.1 → Avg: 763ms  Verlust: 0%
+[2026-10-24 11:58:11] [DNS-AUFLÖSUNG]
+[2026-10-24 11:58:13]   google.com → 1874ms
+[2026-10-24 11:58:13]   cloudflare.com → 192ms
+[2026-10-24 11:58:13] [HTTP-LATENZ]
+[2026-10-24 11:58:20]   https://www.google.com
+[2026-10-24 11:58:21]     DNS:0.014943s  Connect:0.631777s  TTFB:2.185511s  Total:3.078184s  HTTP:200
+[2026-10-24 11:58:45]   https://www.cloudflare.com
+[2026-10-24 11:58:45]     DNS:0.017391s  Connect:0.714615s  TTFB:2.420690s  Total:11.849387s  HTTP:200
+[2026-10-24 11:58:45] [BANDBREITE (curl)]
+[2026-10-24 11:58:45]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 11:59:16]   Download: 1.25 Mbit/s (4689573 bytes in 30.002687s)
+[2026-10-24 11:59:16]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 11:59:24]   Upload:   0.60 Mbit/s (524288 bytes in 7.011561s)
+[2026-10-24 11:59:24] [BANDBREITE (iperf3)]
+[2026-10-24 11:59:25]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 15)
+============================================================
+[2026-10-24 11:59:26] Runde #14 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:01:26] === MESSRUNDE #15 (EW9441) ===
+============================================================
+[2026-10-24 12:01:27] [FLUGDATEN]
+[2026-10-24 12:01:28]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:01:28]   Flugphase:   CRUISE  |  Flugzeit: 01:43
+[2026-10-24 12:01:28]   Höhe:        32087 ft
+[2026-10-24 12:01:29]   Geschw.:     329 kts  |  Kurs: -3.2°
+[2026-10-24 12:01:29]   Temperatur:  -49 °C
+[2026-10-24 12:01:29]   Position:    49.47126, 6.23766
+[2026-10-24 12:01:29]   Ziel-Dist.:  127.8 nm  |  ETA: 10:28 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:01:29]   Internet:    verfügbar
+[2026-10-24 12:01:30] [PING / PAKETVERLUST]
+[2026-10-24 12:01:49]   8.8.8.8 → Avg: 1033ms  Verlust: 20%
+[2026-10-24 12:02:00]   1.1.1.1 → Avg: 920ms  Verlust: 0%
+[2026-10-24 12:02:00] [DNS-AUFLÖSUNG]
+[2026-10-24 12:02:02]   google.com → 1435ms
+[2026-10-24 12:02:04]   cloudflare.com → 1791ms
+[2026-10-24 12:02:04] [HTTP-LATENZ]
+[2026-10-24 12:02:16]   https://www.google.com
+[2026-10-24 12:02:16]     DNS:0.016404s  Connect:0.830660s  TTFB:4.318386s  Total:5.388945s  HTTP:200
+[2026-10-24 12:02:45]   https://www.cloudflare.com
+[2026-10-24 12:02:45]     DNS:0.015275s  Connect:0.721070s  TTFB:3.080723s  Total:13.392667s  HTTP:200
+[2026-10-24 12:02:46] [BANDBREITE (curl)]
+[2026-10-24 12:02:46]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:03:17]   Download: 1.17 Mbit/s (4378826 bytes in 30.001662s)
+[2026-10-24 12:03:17]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:03:26]   Upload:   0.53 Mbit/s (524288 bytes in 7.983748s)
+[2026-10-24 12:03:26] [BANDBREITE (iperf3)]
+[2026-10-24 12:03:26]   Server: bouygues.iperf.fr ...
+[2026-10-24 12:03:32]     nicht erreichbar oder belegt
+[2026-10-24 12:03:33]   Server: paris.testdebit.info ...
+[2026-10-24 12:03:34]     nicht erreichbar oder belegt
+[2026-10-24 12:03:34]   Server: ping.online.net ...
+[2026-10-24 12:03:36]     nicht erreichbar oder belegt
+[2026-10-24 12:03:36]   Server: iperf.he.net ...
+[2026-10-24 12:03:49]     nicht erreichbar oder belegt
+[2026-10-24 12:03:49]   kein iperf3-Server erreichbar (Port 5201 vermutlich gesperrt)
+============================================================
+[2026-10-24 12:03:51] Runde #15 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:05:51] === MESSRUNDE #16 (EW9441) ===
+============================================================
+[2026-10-24 12:05:51] [FLUGDATEN]
+[2026-10-24 12:05:52]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:05:52]   Flugphase:   CRUISE  |  Flugzeit: 01:47
+[2026-10-24 12:05:53]   Höhe:        30317 ft
+[2026-10-24 12:05:53]   Geschw.:     321 kts  |  Kurs: 2.9°
+[2026-10-24 12:05:53]   Temperatur:  -45 °C
+[2026-10-24 12:05:53]   Position:    49.87175, 6.33568
+[2026-10-24 12:05:53]   Ziel-Dist.:  99.8 nm  |  ETA: 10:28 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:05:53]   Internet:    verfügbar
+[2026-10-24 12:05:54] [PING / PAKETVERLUST]
+[2026-10-24 12:06:06]   8.8.8.8 → Avg: 1079ms  Verlust: 0%
+[2026-10-24 12:06:21]   1.1.1.1 → Avg: 1124ms  Verlust: 10%
+[2026-10-24 12:06:21] [DNS-AUFLÖSUNG]
+[2026-10-24 12:06:23]   google.com → 1824ms
+[2026-10-24 12:06:25]   cloudflare.com → 1581ms
+[2026-10-24 12:06:25] [HTTP-LATENZ]
+[2026-10-24 12:06:33]   https://www.google.com
+[2026-10-24 12:06:33]     DNS:0.013024s  Connect:0.961622s  TTFB:2.705714s  Total:3.182923s  HTTP:200
+[2026-10-24 12:06:57]   https://www.cloudflare.com
+[2026-10-24 12:06:57]     DNS:0.015052s  Connect:0.747896s  TTFB:2.290764s  Total:10.260034s  HTTP:200
+[2026-10-24 12:06:57] [BANDBREITE (curl)]
+[2026-10-24 12:06:57]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:07:28]   Download: 1.21 Mbit/s (4554671 bytes in 30.012715s)
+[2026-10-24 12:07:28]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:07:36]   Upload:   0.60 Mbit/s (524288 bytes in 7.008223s)
+[2026-10-24 12:07:36] [BANDBREITE (iperf3)]
+[2026-10-24 12:07:36]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 20)
+============================================================
+[2026-10-24 12:07:38] Runde #16 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:09:38] === MESSRUNDE #17 (EW9441) ===
+============================================================
+[2026-10-24 12:09:38] [FLUGDATEN]
+[2026-10-24 12:09:39]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:09:39]   Flugphase:   CRUISE  |  Flugzeit: 01:51
+[2026-10-24 12:09:40]   Höhe:        28757 ft
+[2026-10-24 12:09:40]   Geschw.:     322 kts  |  Kurs: 3.3°
+[2026-10-24 12:09:40]   Temperatur:  -42 °C
+[2026-10-24 12:09:40]   Position:    50.19808, 6.43764
+[2026-10-24 12:09:40]   Ziel-Dist.:  76.8 nm  |  ETA: 10:28 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:09:41]   Internet:    verfügbar
+[2026-10-24 12:09:41] [PING / PAKETVERLUST]
+[2026-10-24 12:09:52]   8.8.8.8 → Avg: 877ms  Verlust: 0%
+[2026-10-24 12:10:03]   1.1.1.1 → Avg: 906ms  Verlust: 0%
+[2026-10-24 12:10:03] [DNS-AUFLÖSUNG]
+[2026-10-24 12:10:03]   google.com → 197ms
+[2026-10-24 12:10:05]   cloudflare.com → 862ms
+[2026-10-24 12:10:05] [HTTP-LATENZ]
+[2026-10-24 12:10:12]   https://www.google.com
+[2026-10-24 12:10:12]     DNS:0.012554s  Connect:0.679110s  TTFB:2.439755s  Total:3.035072s  HTTP:200
+[2026-10-24 12:10:39]   https://www.cloudflare.com
+[2026-10-24 12:10:40]     DNS:0.018074s  Connect:0.704731s  TTFB:2.200415s  Total:15.008403s  HTTP:200
+[2026-10-24 12:10:40] [BANDBREITE (curl)]
+[2026-10-24 12:10:40]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:11:11]   Download: 1.24 Mbit/s (4644188 bytes in 30.004658s)
+[2026-10-24 12:11:11]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:11:21]   Upload:   0.46 Mbit/s (524288 bytes in 9.153306s)
+[2026-10-24 12:11:21] [BANDBREITE (iperf3)]
+[2026-10-24 12:11:21]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 20)
+============================================================
+[2026-10-24 12:11:23] Runde #17 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:13:23] === MESSRUNDE #18 (EW9441) ===
+============================================================
+[2026-10-24 12:13:23] [FLUGDATEN]
+[2026-10-24 12:13:24]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:13:25]   Flugphase:   CRUISE  |  Flugzeit: 01:55
+[2026-10-24 12:13:25]   Höhe:        22794 ft
+[2026-10-24 12:13:25]   Geschw.:     343 kts  |  Kurs: 5.1°
+[2026-10-24 12:13:25]   Temperatur:  -31 °C
+[2026-10-24 12:13:25]   Position:    50.52715, 6.54236
+[2026-10-24 12:13:25]   Ziel-Dist.:  53.6 nm  |  ETA: 10:29 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:13:26]   Internet:    verfügbar
+[2026-10-24 12:13:26] [PING / PAKETVERLUST]
+[2026-10-24 12:14:15]   8.8.8.8 → nicht erreichbar
+[2026-10-24 12:15:05]   1.1.1.1 → nicht erreichbar
+[2026-10-24 12:15:05] [DNS-AUFLÖSUNG]
+[2026-10-24 12:15:08]   google.com → 2834ms
+[2026-10-24 12:15:10]   cloudflare.com → 1669ms
+[2026-10-24 12:15:10] [HTTP-LATENZ]
+[2026-10-24 12:15:26]   https://www.google.com → Fehler (HTTP:000)
+[2026-10-24 12:15:42]   https://www.cloudflare.com → Fehler (HTTP:000)
+[2026-10-24 12:15:42] [BANDBREITE (curl)]
+[2026-10-24 12:15:42]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:16:13]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:16:14]   Download-Test: proof.ovh.net ...
+[2026-10-24 12:16:36]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:16:37]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:17:03]   Upload:   0.16 Mbit/s (524288 bytes in 25.830036s)
+[2026-10-24 12:17:03] [BANDBREITE (iperf3)]
+[2026-10-24 12:17:04]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 20)
+============================================================
+[2026-10-24 12:17:05] Runde #18 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:19:06] === MESSRUNDE #19 (EW9441) ===
+============================================================
+[2026-10-24 12:19:06] [FLUGDATEN]
+[2026-10-24 12:19:07]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:19:07]   Flugphase:   DESCENT  |  Flugzeit: 02:00
+[2026-10-24 12:19:07]   Höhe:        12087 ft
+[2026-10-24 12:19:07]   Geschw.:     365 kts  |  Kurs: 32.7°
+[2026-10-24 12:19:08]   Temperatur:  -11 °C
+[2026-10-24 12:19:08]   Position:    51.06514, 6.85375
+[2026-10-24 12:19:08]   Ziel-Dist.:  16.0 nm  |  ETA: 10:29 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:19:08]   Internet:    verfügbar
+[2026-10-24 12:19:08] [PING / PAKETVERLUST]
+[2026-10-24 12:19:58]   8.8.8.8 → nicht erreichbar
+[2026-10-24 12:20:47]   1.1.1.1 → nicht erreichbar
+[2026-10-24 12:20:47] [DNS-AUFLÖSUNG]
+[2026-10-24 12:20:56]   google.com → 8245ms
+[2026-10-24 12:20:59]   cloudflare.com → 2559ms
+[2026-10-24 12:20:59] [HTTP-LATENZ]
+[2026-10-24 12:21:15]   https://www.google.com → Fehler (HTTP:000)
+[2026-10-24 12:21:16]   https://www.cloudflare.com → Fehler (HTTP:000)
+[2026-10-24 12:21:16] [BANDBREITE (curl)]
+[2026-10-24 12:21:16]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:21:17]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:21:18]   Download-Test: proof.ovh.net ...
+[2026-10-24 12:21:39]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:21:40]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:22:03]   Upload:   0.19 Mbit/s (524288 bytes in 22.339379s)
+[2026-10-24 12:22:03] [BANDBREITE (iperf3)]
+[2026-10-24 12:22:03]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 20)
+============================================================
+[2026-10-24 12:22:05] Runde #19 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:24:05] === MESSRUNDE #20 (EW9441) ===
+============================================================
+[2026-10-24 12:24:05] [FLUGDATEN]
+[2026-10-24 12:24:06]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:24:07]   Flugphase:   APPROACH  |  Flugzeit: 02:05
+[2026-10-24 12:24:07]   Höhe:        4857 ft
+[2026-10-24 12:24:07]   Geschw.:     226 kts  |  Kurs: 1.8°
+[2026-10-24 12:24:07]   Temperatur:  -2 °C
+[2026-10-24 12:24:07]   Position:    51.37447, 7.19416
+[2026-10-24 12:24:08]   Ziel-Dist.:  19.4 nm  |  ETA: 10:31 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:24:08]   Internet:    verfügbar
+[2026-10-24 12:24:08] [PING / PAKETVERLUST]
+[2026-10-24 12:24:19]   8.8.8.8 → Avg: 828ms  Verlust: 0%
+[2026-10-24 12:24:30]   1.1.1.1 → Avg: 846ms  Verlust: 0%
+[2026-10-24 12:24:30] [DNS-AUFLÖSUNG]
+[2026-10-24 12:24:31]   google.com → 965ms
+[2026-10-24 12:24:33]   cloudflare.com → 1020ms
+[2026-10-24 12:24:33] [HTTP-LATENZ]
+[2026-10-24 12:24:43]   https://www.google.com
+[2026-10-24 12:24:43]     DNS:0.037351s  Connect:0.713133s  TTFB:2.682744s  Total:3.396652s  HTTP:200
+[2026-10-24 12:25:11]   https://www.cloudflare.com
+[2026-10-24 12:25:11]     DNS:0.035834s  Connect:0.750052s  TTFB:2.796505s  Total:12.812463s  HTTP:200
+[2026-10-24 12:25:12] [BANDBREITE (curl)]
+[2026-10-24 12:25:12]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:25:43]   Download: 1.17 Mbit/s (4378259 bytes in 30.013799s)
+[2026-10-24 12:25:43]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:26:05]   Upload:   0.20 Mbit/s (524288 bytes in 21.375332s)
+[2026-10-24 12:26:05] [BANDBREITE (iperf3)]
+[2026-10-24 12:26:06]   Server: bouygues.iperf.fr ...
+[2026-10-24 12:26:12]     nicht erreichbar oder belegt
+[2026-10-24 12:26:12]   Server: paris.testdebit.info ...
+[2026-10-24 12:26:14]     nicht erreichbar oder belegt
+[2026-10-24 12:26:14]   Server: ping.online.net ...
+[2026-10-24 12:26:15]     nicht erreichbar oder belegt
+[2026-10-24 12:26:16]   Server: iperf.he.net ...
+[2026-10-24 12:26:17]     nicht erreichbar oder belegt
+[2026-10-24 12:26:17]   kein iperf3-Server erreichbar (Port 5201 vermutlich gesperrt)
+============================================================
+[2026-10-24 12:26:19] Runde #20 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:28:19] === MESSRUNDE #21 (EW9441) ===
+============================================================
+[2026-10-24 12:28:20] [FLUGDATEN]
+[2026-10-24 12:28:20]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:28:21]   Flugphase:   APPROACH  |  Flugzeit: 02:09
+[2026-10-24 12:28:21]   Höhe:        3022 ft
+[2026-10-24 12:28:21]   Geschw.:     149 kts  |  Kurs: -123.7°
+[2026-10-24 12:28:21]   Temperatur:  1 °C
+[2026-10-24 12:28:21]   Position:    51.40314, 6.96121
+[2026-10-24 12:28:22]   Ziel-Dist.:  11.5 nm  |  ETA: 10:32 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:28:22]   Internet:    verfügbar
+[2026-10-24 12:28:22] [PING / PAKETVERLUST]
+[2026-10-24 12:28:33]   8.8.8.8 → Avg: 760ms  Verlust: 0%
+[2026-10-24 12:28:44]   1.1.1.1 → Avg: 790ms  Verlust: 0%
+[2026-10-24 12:28:44] [DNS-AUFLÖSUNG]
+[2026-10-24 12:28:46]   google.com → 1813ms
+[2026-10-24 12:28:47]   cloudflare.com → 848ms
+[2026-10-24 12:28:47] [HTTP-LATENZ]
+[2026-10-24 12:28:55]   https://www.google.com
+[2026-10-24 12:28:55]     DNS:0.016692s  Connect:0.849460s  TTFB:2.604258s  Total:3.111517s  HTTP:200
+[2026-10-24 12:29:18]   https://www.cloudflare.com
+[2026-10-24 12:29:18]     DNS:0.015157s  Connect:0.692359s  TTFB:2.281907s  Total:10.401880s  HTTP:200
+[2026-10-24 12:29:18] [BANDBREITE (curl)]
+[2026-10-24 12:29:18]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:29:49]   Download: 1.23 Mbit/s (4595045 bytes in 30.000232s)
+[2026-10-24 12:29:50]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:29:59]   Upload:   0.47 Mbit/s (524288 bytes in 8.837986s)
+[2026-10-24 12:29:59] [BANDBREITE (iperf3)]
+[2026-10-24 12:30:00]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 25)
+============================================================
+[2026-10-24 12:30:01] Runde #21 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:32:02] === MESSRUNDE #22 (EW9441) ===
+============================================================
+[2026-10-24 12:32:02] [FLUGDATEN]
+[2026-10-24 12:32:03]   Callsign:    EWG3LK  (D-AIDT, A321)
+[2026-10-24 12:32:03]   Flugphase:   APPROACH  |  Flugzeit: 02:13
+[2026-10-24 12:32:03]   Höhe:        185 ft
+[2026-10-24 12:32:03]   Geschw.:     129 kts  |  Kurs: -127.5°
+[2026-10-24 12:32:04]   Temperatur:  10 °C
+[2026-10-24 12:32:04]   Position:    51.31868, 6.78183
+[2026-10-24 12:32:04]   Ziel-Dist.:  2.1 nm  |  ETA: 10:31 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:32:04]   Internet:    verfügbar
+[2026-10-24 12:32:04] [PING / PAKETVERLUST]
+[2026-10-24 12:32:19]   8.8.8.8 → Avg: 680ms  Verlust: 10%
+[2026-10-24 12:32:34]   1.1.1.1 → Avg: 769ms  Verlust: 10%
+[2026-10-24 12:32:34] [DNS-AUFLÖSUNG]
+[2026-10-24 12:32:36]   google.com → 2237ms
+[2026-10-24 12:32:39]   cloudflare.com → 2208ms
+[2026-10-24 12:32:39] [HTTP-LATENZ]
+[2026-10-24 12:32:55]   https://www.google.com → Fehler (HTTP:000)
+[2026-10-24 12:33:08]   https://www.cloudflare.com → Fehler (HTTP:000)
+[2026-10-24 12:33:08] [BANDBREITE (curl)]
+[2026-10-24 12:33:08]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:33:39]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:33:39]   Download-Test: proof.ovh.net ...
+[2026-10-24 12:34:01]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:34:01]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:34:32]   Upload-Test fehlgeschlagen
+[2026-10-24 12:34:32] [BANDBREITE (iperf3)]
+[2026-10-24 12:34:33]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 25)
+============================================================
+[2026-10-24 12:34:34] Runde #22 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+============================================================
+[2026-10-24 12:36:34] === MESSRUNDE #23 (EW9441) ===
+============================================================
+[2026-10-24 12:36:35] [FLUGDATEN]
+[2026-10-24 12:36:36]   Callsign:      (D-AIDT, A321)
+[2026-10-24 12:36:36]   Flugphase:   TAXI_IN  |  Flugzeit: 00:04
+[2026-10-24 12:36:36]   Höhe:        125 ft
+[2026-10-24 12:36:36]   Geschw.:     3 kts  |  Kurs: -85.2°
+[2026-10-24 12:36:36]   Temperatur:  12 °C
+[2026-10-24 12:36:37]   Position:    51.30203, 6.77015
+[2026-10-24 12:36:37]   Ziel-Dist.:  0.9 nm  |  ETA: 10:36 (API-Zeit, vermutlich UTC)
+[2026-10-24 12:36:37]   Internet:    nicht verfügbar (Code 2; Flag = Portal-/Bezahlstatus, nicht der Link)
+[2026-10-24 12:36:37] [PING / PAKETVERLUST]
+[2026-10-24 12:36:47]   8.8.8.8 → nicht erreichbar
+[2026-10-24 12:37:05]   1.1.1.1 → nicht erreichbar
+[2026-10-24 12:37:05] [DNS-AUFLÖSUNG]
+[2026-10-24 12:37:05]   google.com → 204ms
+[2026-10-24 12:37:06]   cloudflare.com → 205ms
+[2026-10-24 12:37:06] [HTTP-LATENZ]
+[2026-10-24 12:37:07]   https://www.google.com → Fehler (HTTP:000)
+[2026-10-24 12:37:08]   https://www.cloudflare.com → Fehler (HTTP:000)
+[2026-10-24 12:37:08] [BANDBREITE (curl)]
+[2026-10-24 12:37:08]   Download-Test: speed.cloudflare.com ...
+[2026-10-24 12:37:09]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:37:10]   Download-Test: proof.ovh.net ...
+[2026-10-24 12:37:31]   Fehlgeschlagen (HTTP:000)
+[2026-10-24 12:37:32]   Upload-Test: speed.cloudflare.com ...
+[2026-10-24 12:37:32]   Upload-Test fehlgeschlagen
+[2026-10-24 12:37:33] [BANDBREITE (iperf3)]
+[2026-10-24 12:37:33]   übersprungen (letzter Versuch fehlgeschlagen, nächster in Runde 25)
+============================================================
+[2026-10-24 12:37:34] Runde #23 abgeschlossen. Nächste in 120s (Strg+C = Ende)
+============================================================
+[2026-10-24 12:38:18] Messung beendet. Letzte Runde: #24
+[2026-10-24 12:38:18] Log: ./logs/wingsconnect_2026-10-24_EW9441.log
+[2026-10-24 12:38:19] CSV: ./logs/wingsconnect_2026-10-24_EW9441.csv

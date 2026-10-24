@@ -2,17 +2,17 @@
 
 Misst die In-Flight-WiFi-Qualität auf Eurowings-Flügen (Wings Connect by Anuvu, Ku-Band-Satellit) und verknüpft jede Messrunde mit den Live-Flugdaten der Bord-API.
 
-## Aktueller Stand (2026-10-18) — nach dem Flug aktualisieren
+## Aktueller Stand (2026-10-24)
 
-- **Flug 2: EW9444 DUS → BCN, Abflug 16:20.** Laptop ist vorbereitet (`prepare_laptop.ps1` um 10:10: Schema „WingsConnect“, Updates pausiert bis 25.10., Dropbox aus). Backup in `prep_backup_state.json`.
-- An Bord: `bash test_connection.sh --flight EW9444` — einmal starten, laufen lassen; bei Abbruch denselben Befehl erneut (hängt an). Zusätzlich einmal `probe_network.py --flight EW9444` (vor und nach dem Portal-Login, ~2 Min.).
-- Nach der Landung: `.\prepare_laptop.ps1 -Restore`, dann Report (`--flight EW9444 --open`), commit + push.
+- **Beide Messflüge sind ausgewertet, kein weiterer Flug geplant.** Laptop am 24.10. per `-Restore` zurückgesetzt.
+- Flug 2: **EW9441 BCN → DUS, 24.10.2026**, A321ceo D-AIDT (Callsign EWG3LK): `logs/REPORT_2026-10-24_EWG3LK.html`, 23 Runden bis Taxi-In. Auf dem Hinflug EW9444 (18.10., DUS → BCN) war **kein Wings Connect verfügbar** — keine Messung.
 - Flug 1 (EWG39C DUS → ACE, 31.03.) ist ausgewertet: `logs/BERICHT_2026-03-31_*.md` (mit Erratum) und `logs/REPORT_2026-03-31_*.html`.
 
 ## Dateien
 
 - `test_connection.sh` — Messskript (Ping, DNS, HTTP, curl-Bandbreite, optional iperf3, Flugdaten)
 - `make_report.py` — HTML-Bericht und `--summary` (Textstatus), Python 3 ohne Abhängigkeiten
+- `probe_session.py` — Sidecar (Flug 2): redigierter Sitzungs-/Tarifstatus des Anuvu-Portals alle 5 Min → `logs/session_*.jsonl`; nur Feld-Whitelist, niemals Zugangsdaten loggen
 - `probe_network.py` — einmalige Netzwerk-Probe: erlaubte Ports/Protokolle, DNS/Proxy/TLS, Client-Isolation, Sichtbarkeit des eigenen Geräts → `logs/netprobe_*.txt/.json`
 - `prepare_laptop.ps1` — Laptop vorbereiten / `-Restore`
 - `README.md` — Befehle, Optionen, CSV-Spalten, Checkliste · `docs/wingsconnect-api.md` — Bord-API
@@ -21,10 +21,10 @@ Misst die In-Flight-WiFi-Qualität auf Eurowings-Flügen (Wings Connect by Anuvu
 ## Befehle
 
 ```bash
-bash test_connection.sh --flight EW9444                        # Dauermessung alle 2 Min.
+bash test_connection.sh --flight EW9441                        # Dauermessung alle 2 Min.
 bash test_connection.sh --once                                 # Funktionstest (Dateien *_test.*)
-/c/Python313/python make_report.py --flight EW9444 --summary   # Status in ~20 Zeilen
-/c/Python313/python make_report.py --flight EW9444 --open      # HTML-Bericht
+/c/Python313/python make_report.py --flight EW9441 --summary   # Status in ~20 Zeilen
+/c/Python313/python make_report.py --flight EW9441 --open      # HTML-Bericht
 ```
 
 ## Regeln
@@ -41,6 +41,7 @@ bash test_connection.sh --once                                 # Funktionstest (
 - Flug-1-Daten liegen in 10 Teildateien (Skript-Neustarts); `make_report.py` führt sie zusammen.
 - `probe_network.py` nicht wiederholt laufen lassen: portquiz.net/letmeoutofyour.net sperren die IP nach wenigen Läufen. Zum Testen einzelner Abschnitte das Modul importieren und `EGRESS_PORTS` kürzen.
 - Netprobe-Logs enthalten Firewall-Regeln und lauschende Ports des Laptops. Das Repo ist privat (geprüft 18.10.); vor einer Veröffentlichung die `netprobe_*` herausnehmen.
+- Flug 2, Runden ca. 11:59–12:03 lokal: parallel liefen größere Downloads über den Satelliten-Link (~3 MB); Bandbreite/Latenz dieser Runden ggf. gedrückt.
 
 ## Erfahrungswerte Flug 1 (Reiseflughöhe, Satellit)
 
