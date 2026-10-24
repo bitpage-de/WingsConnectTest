@@ -7,7 +7,7 @@ Lizenzen.
 | Inhalt | Pfade | Lizenz |
 |--------|-------|--------|
 | Mess- und Auswertungsskripte | `test_connection.sh`, `make_report.py`, `probe_network.py`, `probe_session.py`, `prepare_laptop.ps1`, `.claude/` | MIT |
-| Messdaten, Berichte, Dokumentation | `logs/`, `docs/`, `README.md`, `CLAUDE.md`, diese Datei | CC BY 4.0 |
+| Messdaten, Berichte, Dokumentation | `logs/`, `docs/`, `README.md`, `CLAUDE.md`, diese Datei | CC0 1.0 |
 
 ---
 
@@ -35,25 +35,30 @@ SOFTWARE.
 
 ---
 
-## Messdaten, Berichte, Dokumentation: CC BY 4.0
+## Messdaten, Berichte, Dokumentation: CC0 1.0
 
-Creative Commons Namensnennung 4.0 International (CC BY 4.0)
+Creative Commons CC0 1.0 Universell, Public Domain Dedication
 
-- Kurzfassung: https://creativecommons.org/licenses/by/4.0/deed.de
-- Volltext: https://creativecommons.org/licenses/by/4.0/legalcode.de
+- Kurzfassung: https://creativecommons.org/publicdomain/zero/1.0/deed.de
+- Volltext: https://creativecommons.org/publicdomain/zero/1.0/legalcode.de
 
-Du darfst das Material teilen und bearbeiten, auch kommerziell und in jedem
-Format. Bedingung ist eine angemessene Namensnennung, ein Hinweis auf
-vorgenommene Änderungen und ein Link auf die Lizenz.
+Soweit rechtlich möglich wird auf alle Urheber- und verwandten Rechte an diesen
+Inhalten verzichtet. Du darfst sie ohne Bedingungen nutzen, kopieren, verändern
+und weiterverbreiten, auch kommerziell, ohne Namensnennung und ohne Anfrage.
 
-CC BY 4.0 erstreckt sich ausdrücklich auch auf das Datenbankherstellerrecht
-(§§ 87a ff. UrhG, sui generis database right), das für eine systematisch
-erhobene Messreihe wie diese greifen kann.
+Der Verzicht umfasst ausdrücklich auch das Datenbankherstellerrecht
+(§§ 87a ff. UrhG, sui generis database right), das für eine
+systematisch erhobene Messreihe wie diese greifen kann.
 
-**Zitiervorschlag**
+CC0 erfasst keine Marken- und Patentrechte. Die Hinweise zu Marken weiter unten
+bleiben davon unberührt.
 
-> Wings Connect Test – Messung der In-Flight-WiFi-Qualität auf Eurowings-Flügen.
-> bitpage, 2026. https://github.com/bitpage-de/WingsConnectTest · CC BY 4.0
+**Zitiervorschlag, freiwillig und keine Bedingung**
+
+> Wings Connect Test, Messung der In-Flight-WiFi-Qualität auf Eurowings-Flügen.
+> bitpage, 2026. https://github.com/bitpage-de/WingsConnectTest - CC0 1.0
+
+Eine Nennung ist nicht erforderlich, aber willkommen.
 
 ---
 

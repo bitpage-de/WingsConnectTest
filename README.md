@@ -173,7 +173,7 @@ Ausgabe: `logs/netprobe_<Datum>_<Uhrzeit>_<Flug>.txt` (lesbar) und `.json`. Sinn
 | Inhalt | Lizenz |
 |--------|--------|
 | Skripte (`*.sh`, `*.py`, `*.ps1`) | MIT |
-| Messdaten, Berichte, Dokumentation (`logs/`, `docs/`, `*.md`) | CC BY 4.0 |
+| Messdaten, Berichte, Dokumentation (`logs/`, `docs/`, `*.md`) | CC0 1.0 (Public Domain) |
 
 - **Unabhängig:** kein Auftrag, keine Beteiligung, keine Billigung durch Eurowings, Anuvu oder Lufthansa Systems.
 - **Marken:** Eurowings, Wings Connect, Anuvu und BoardConnect sind Marken ihrer Inhaber, hier rein benennend verwendet.
