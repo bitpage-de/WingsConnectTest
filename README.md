@@ -17,11 +17,11 @@ Alle Befehle in **Git Bash** im Projektordner ausführen.
 
 ```bash
 # Dauermessung für einen Flug (alle 2 Min., bis Strg+C)
-bash test_connection.sh --flight EW9444
+bash test_connection.sh --flight EW9441
 
 # Nach Absturz / versehentlichem Schließen: einfach denselben Befehl erneut
 # → hängt an die Dateien des Tages an, Rundenzähler läuft weiter
-bash test_connection.sh --flight EW9444
+bash test_connection.sh --flight EW9441
 
 # Funktionstest zu Hause (eine Runde, landet in *_test.*)
 bash test_connection.sh --once
@@ -88,7 +88,7 @@ Fehlwerte: `N/A` (nicht gemessen), `timeout` / `error` (Messung fehlgeschlagen).
 1. Mit dem Bord-WLAN verbinden, Portal öffnen, Paket freischalten
 2. WLAN als getaktet markieren, damit Windows im Hintergrund nichts nachlädt (als Administrator, `<SSID>` ersetzen):
    `netsh wlan set profileparameter name="<SSID>" cost=Fixed`
-3. Messung starten: `bash test_connection.sh --flight EW9444`
+3. Messung starten: `bash test_connection.sh --flight EW9441`
 4. **Nicht neu starten**, solange es läuft. Bei Problemen: Strg+C, denselben Befehl erneut → hängt an.
 5. Laufen lassen bis das WLAN im Sinkflug abgeschaltet wird
 
@@ -96,13 +96,13 @@ Fehlwerte: `N/A` (nicht gemessen), `timeout` / `error` (Messung fehlgeschlagen).
 
 ```bash
 # Rohdaten sichern = committen und pushen (logs/ liegt komplett im Repo)
-git add -A && git commit -m "Messdaten EW9444" && git push
+git add -A && git commit -m "Messdaten EW9441" && git push
 
 # HTML-Bericht erzeugen (eine Datei, offline nutzbar) und im Browser öffnen
-/c/Python313/python make_report.py --flight EW9444 --open
+/c/Python313/python make_report.py --flight EW9441 --open
 
 # Schnellblick: Höhe, Phase, Ping, Verlust, Download pro Runde
-cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9444.csv | column -t -s','
+cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9441.csv | column -t -s','
 ```
 
 ## HTML-Bericht
@@ -110,9 +110,9 @@ cut -d',' -f1,3,7,8,19,20,29 logs/wingsconnect_2026-10-18_EW9444.csv | column -t
 `make_report.py` liest die CSV-Dateien (altes Format von Flug 1 und neues Format), optional die `.jsonl`-Rohdaten, und schreibt einen eigenständigen Bericht nach `logs/REPORT_<Datum>_<Flug>.html` mit Kennzahlen, Zeitreihen (Ping, Verlust, DNS, TTFB, Bandbreite, Höhe, Speed), Flugspur, Ereignisliste und vollständiger Tabelle. Hell/Dunkel folgt dem System, Tooltips per Maus.
 
 ```bash
-/c/Python313/python make_report.py --flight EW9444 --summary    # Kurzstatus im Terminal, kein HTML
-/c/Python313/python make_report.py --flight EW9444              # alle logs/wingsconnect_*_EW9444.csv
-/c/Python313/python make_report.py --flight EW9444 --date 2026-10-18 --open
+/c/Python313/python make_report.py --flight EW9441 --summary    # Kurzstatus im Terminal, kein HTML
+/c/Python313/python make_report.py --flight EW9441              # alle logs/wingsconnect_*_EW9441.csv
+/c/Python313/python make_report.py --flight EW9441 --date 2026-10-24 --open
 /c/Python313/python make_report.py logs/wingsconnect_2026-03-31_*.csv --flight EWG39C --route "DUS → ACE" \
     -o logs/REPORT_2026-03-31_EWG39C_DUS-ACE.html                 # Flug 1 (altes Format, 10 Teildateien)
 ```
@@ -124,8 +124,8 @@ Hinweis zu Flug 1: Das alte Skript speicherte den Paketverlust als *Anzahl* verl
 `probe_network.py` prüft einmalig (ca. 2 Minuten), was im Netz erlaubt ist und wie sichtbar das eigene Gerät ist. Es testet nur eigene Verbindungen, das eigene Subnetz und das eigene Gerät, keine Portscans fremder Geräte.
 
 ```bash
-/c/Python313/python probe_network.py --flight EW9444        # voll: mit Ping-Sweep im eigenen /24, 15 s Mithören
-/c/Python313/python probe_network.py --flight EW9444 --quick
+/c/Python313/python probe_network.py --flight EW9441        # voll: mit Ping-Sweep im eigenen /24, 15 s Mithören
+/c/Python313/python probe_network.py --flight EW9441 --quick
 ```
 
 | Block | Was geprüft wird |
