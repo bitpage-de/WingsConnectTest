@@ -1,4 +1,9 @@
 .claude/settings.local.json
+
+# Netprobe-Ausgaben: enthalten Firewall-Regeln und lauschende Ports des Laptops
+logs/netprobe_*
+# Funktionstest-Dateien (--once)
+logs/*_test.*
 prep_backup_*.json
 prep_lastrun.log
 

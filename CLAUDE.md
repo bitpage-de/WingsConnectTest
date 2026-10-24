@@ -16,7 +16,7 @@ Misst die In-Flight-WiFi-Qualität auf Eurowings-Flügen (Wings Connect by Anuvu
 - `probe_network.py` — einmalige Netzwerk-Probe: erlaubte Ports/Protokolle, DNS/Proxy/TLS, Client-Isolation, Sichtbarkeit des eigenen Geräts → `logs/netprobe_*.txt/.json`
 - `prepare_laptop.ps1` — Laptop vorbereiten / `-Restore`
 - `README.md` — Befehle, Optionen, CSV-Spalten, Checkliste · `docs/wingsconnect-api.md` — Bord-API
-- `logs/` — `.log` (lesbar), `.csv` (eine Zeile pro Runde), `.jsonl` (rohe API-Antworten), `BERICHT_*.md`, `REPORT_*.html`; komplett im Repo
+- `logs/` — `.log` (lesbar), `.csv` (eine Zeile pro Runde), `.jsonl` (rohe API-Antworten), `BERICHT_*.md`, `REPORT_*.html`; versioniert. Netprobe-Ausgaben und Funktionstest-Dateien (`*_test.*`) bleiben lokal.
 
 ## Befehle
 
@@ -40,7 +40,7 @@ bash test_connection.sh --once                                 # Funktionstest (
 - `internetAvailable: false` trotz funktionierendem Link = Portal-/Bezahlstatus.
 - Flug-1-Daten liegen in 10 Teildateien (Skript-Neustarts); `make_report.py` führt sie zusammen.
 - `probe_network.py` nicht wiederholt laufen lassen: portquiz.net/letmeoutofyour.net sperren die IP nach wenigen Läufen. Zum Testen einzelner Abschnitte das Modul importieren und `EGRESS_PORTS` kürzen.
-- Netprobe-Logs enthalten Firewall-Regeln und lauschende Ports des Laptops. Das Repo ist privat (geprüft 18.10.); vor einer Veröffentlichung die `netprobe_*` herausnehmen.
+- Netprobe-Ausgaben enthalten Firewall-Regeln, lauschende Ports und IPs des Laptops und werden **nicht** versioniert (`.gitignore`). Sie bleiben lokal.
 - Flug 2, Runden ca. 11:59–12:03 lokal: parallel liefen größere Downloads über den Satelliten-Link (~3 MB); Bandbreite/Latenz dieser Runden ggf. gedrückt.
 
 ## Erfahrungswerte Flug 1 (Reiseflughöhe, Satellit)

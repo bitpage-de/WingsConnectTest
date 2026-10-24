@@ -7,7 +7,9 @@ Live-Flugdaten der bordinternen API.
 | Flug | Datum | Route | Bericht |
 |------|-------|-------|---------|
 | EWG39C / EW39C | 2026-03-31 | DUS → ACE | [logs/BERICHT_2026-03-31_EWG39C_DUS-ACE.md](logs/BERICHT_2026-03-31_EWG39C_DUS-ACE.md) |
-| EW9444 | 2026-10-18 | DUS → BCN | folgt |
+| EW9441 / EWG3LK | 2026-10-24 | BCN → DUS | [logs/REPORT_2026-10-24_EWG3LK.html](logs/REPORT_2026-10-24_EWG3LK.html) |
+
+Auf dem Hinflug EW9444 (2026-10-18, DUS → BCN) war Wings Connect nicht verfügbar, daher keine Messung.
 
 ## Schnellstart
 
